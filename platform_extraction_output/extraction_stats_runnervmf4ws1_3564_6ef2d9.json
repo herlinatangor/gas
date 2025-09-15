@@ -1,0 +1,31 @@
+{
+  "summary": {
+    "files_processed": 1,
+    "files_success": 1,
+    "files_error": 0,
+    "total_lines": 49,
+    "total_matches": 3,
+    "total_extracted": 3,
+    "platform_breakdown": {
+      "ftp": 3
+    },
+    "errors": []
+  },
+  "configuration": {
+    "platform_type": "ftp",
+    "keywords": [
+      "ftp",
+      "21"
+    ],
+    "input_directory": "/tmp/tmpnfkmyoao",
+    "output_directory": "/home/runner/work/gas/gas/./platform_extraction_output",
+    "parsers_used": 1
+  },
+  "execution": {
+    "start_time": 1757977572.4293325,
+    "end_time": 1757977572.4365313,
+    "duration_seconds": 0.007198810577392578,
+    "instance_id": "runnervmf4ws1_3564_6ef2d9",
+    "version": "4.1.0 FINAL"
+  }
+}

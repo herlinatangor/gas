@@ -1,0 +1,39 @@
+{
+  "summary": {
+    "files_processed": 1,
+    "files_success": 1,
+    "files_error": 0,
+    "total_lines": 49,
+    "total_matches": 11,
+    "total_extracted": 10,
+    "platform_breakdown": {
+      "wordpress": 2,
+      "joomla": 3,
+      "moodle": 0,
+      "cpanel": 0,
+      "plesk": 1,
+      "directadmin": 1,
+      "ssh": 1,
+      "ftp": 0,
+      "database": 1,
+      "webmin": 1
+    },
+    "errors": []
+  },
+  "configuration": {
+    "platform_type": "all_platforms",
+    "keywords": [
+      "admin"
+    ],
+    "input_directory": "/tmp/tmpnfkmyoao",
+    "output_directory": "/home/runner/work/gas/gas/./platform_extraction_output",
+    "parsers_used": 10
+  },
+  "execution": {
+    "start_time": 1757977571.9379282,
+    "end_time": 1757977571.9464636,
+    "duration_seconds": 0.008535385131835938,
+    "instance_id": "runnervmf4ws1_3552_b093d2",
+    "version": "4.1.0 FINAL"
+  }
+}

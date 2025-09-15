@@ -1,0 +1,31 @@
+{
+  "summary": {
+    "files_processed": 1,
+    "files_success": 1,
+    "files_error": 0,
+    "total_lines": 49,
+    "total_matches": 3,
+    "total_extracted": 3,
+    "platform_breakdown": {
+      "wordpress": 3
+    },
+    "errors": []
+  },
+  "configuration": {
+    "platform_type": "wordpress",
+    "keywords": [
+      "wp-admin",
+      "wp-login"
+    ],
+    "input_directory": "/tmp/tmpnfkmyoao",
+    "output_directory": "/home/runner/work/gas/gas/./platform_extraction_output",
+    "parsers_used": 1
+  },
+  "execution": {
+    "start_time": 1757977572.0213737,
+    "end_time": 1757977572.0286918,
+    "duration_seconds": 0.007318019866943359,
+    "instance_id": "runnervmf4ws1_3554_b8133a",
+    "version": "4.1.0 FINAL"
+  }
+}

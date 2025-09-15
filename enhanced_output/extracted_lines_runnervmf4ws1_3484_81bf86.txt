@@ -1,0 +1,6 @@
+ftp://example.com:21|ftpuser|ftppass
+https://example.com/administrator/|joomlauser|joomlapass
+https://example.com/wp-admin/|admin|wppass123
+https://example.com:2083|cpaneluser|cpanel123
+https://example.com:8443|pleskuser|pleskpass
+ssh://example.com:22|sshuser|sshpass
