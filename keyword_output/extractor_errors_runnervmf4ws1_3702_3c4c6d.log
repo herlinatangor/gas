@@ -1,0 +1,14 @@
+2025-09-15 23:13:13 [ERROR   ] [Instance: runnervm] - Unexpected error processing '/home/runner/work/gas/gas/input/input.txt': name 'parsed_into_original_format' is not defined! Skipping this file.
+Traceback (most recent call last):
+  File "/home/runner/work/gas/gas/gas.py", line 1006, in process_file
+    if not (parsed_into_original_format and is_valid_components) and line_stripped:
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'parsed_into_original_format' is not defined
+2025-09-15 23:13:15 [ERROR   ] [Instance: runnervm] - Processing of file 'input.txt' failed or was aborted (process_file returned -1). File will be re-attempted on a next run if not logged.
+2025-09-15 23:13:15 [ERROR   ] [Instance: runnervm] - Unexpected error processing '/home/runner/work/gas/gas/input/input1.txt': name 'parsed_into_original_format' is not defined! Skipping this file.
+Traceback (most recent call last):
+  File "/home/runner/work/gas/gas/gas.py", line 1006, in process_file
+    if not (parsed_into_original_format and is_valid_components) and line_stripped:
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'parsed_into_original_format' is not defined
+2025-09-15 23:13:17 [ERROR   ] [Instance: runnervm] - Processing of file 'input1.txt' failed or was aborted (process_file returned -1). File will be re-attempted on a next run if not logged.

@@ -1,0 +1,2 @@
+#|cPanel|(Most
+https://example.com:2083/login/?login_only=1|cpaneluser|cpanel123
