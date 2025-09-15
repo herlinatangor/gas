@@ -1,0 +1,12 @@
+2025-09-15 22:12:16 [INFO    ] [Instance: runnervm] - UltraOptimizedKeywordExtractor v4.0.0-OPTIMIZED - Optimized extraction started
+2025-09-15 22:12:16 [INFO    ] [Instance: runnervm] - Instance ID: runnervmf4ws1_3541_ddf2cf
+2025-09-15 22:12:16 [INFO    ] [Instance: runnervm] - Processing file: input.txt
+2025-09-15 22:12:16 [INFO    ] [Instance: runnervm] - Processing file: input1.txt
+2025-09-15 22:12:16 [INFO    ] [Instance: runnervm] - Sorting and deduplicating output...
+2025-09-15 22:12:16 [INFO    ] [Instance: runnervm] - Output file finalized with 887 unique lines
+2025-09-15 22:12:16 [INFO    ] [Instance: runnervm] - Processing complete:
+2025-09-15 22:12:16 [INFO    ] [Instance: runnervm] -   Files processed: 2
+2025-09-15 22:12:16 [INFO    ] [Instance: runnervm] -   Lines read: 1,806
+2025-09-15 22:12:16 [INFO    ] [Instance: runnervm] -   Lines written: 887
+2025-09-15 22:12:16 [INFO    ] [Instance: runnervm] -   Bytes processed: 64,566
+2025-09-15 22:12:16 [INFO    ] [Instance: runnervm] -   Parser stats: {'parsed': 1129, 'validated': 1107, 'rejected': 130, 'duplicates': 220}
