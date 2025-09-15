@@ -1,0 +1,16 @@
+192.168.1.1:2083|cpaneluser|cpanel123
+192.168.1.1::2083|cpaneluser|cpanel123
+192.168.1.1|2083|cpaneluser
+2083/frontend/x3/index.html|//example.com|cpaneluser:cpanel123:https
+cpaneluser:cpanel123|192.168.1.1|2083
+cpaneluser:cpanel123|example.com|2083
+cpaneluser|cpanel123|192.168.1.1:2083
+example.com:2083|cpanel123|cpaneluser
+example.com:2083|cpaneluser|cpanel123
+http://cpanel.example.com:2095|reseller|reseller123
+https://example.com/cpanel|cpaneluser|cpanelpass
+https://example.com:2083/frontend/x3/index.html|cpaneluser|cpanel123
+https://example.com:2083/login/?login_only=1|cpanel123|cpaneluser
+https://example.com:2083/login/?login_only=1|cpaneluser|cpanel123
+https://example.com:2083|admin|cpanel123
+https|//sub.example.com|2083 cpanel_admin cpanel_secret

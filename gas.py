@@ -108,6 +108,100 @@ LOCK_FILE = os.path.join(BASE_OUTPUT_DIR, '.lock')
 # Instance identification
 INSTANCE_ID = f"{socket.gethostname()}_{os.getpid()}_{uuid.uuid4().hex[:6]}"
 
+# Platform detection patterns
+PLATFORM_PATTERNS = {
+    "cpanel": {
+        "ports": ["2083", "2082", "2095", "2096"],
+        "paths": ["/cpanel", "/login/?login_only=1", "/frontend/x3/index.html"],
+        "keywords": ["cpanel", "whostmgr"],
+        "patterns": [r":208[23]", r"cpanel", r"whostmgr"]
+    },
+    "whm": {
+        "ports": ["2087"],
+        "paths": ["/whm", "/scripts2/", "/whm-server-status"],
+        "keywords": ["whm", "webhost", "manager"],
+        "patterns": [r":2087", r"whm", r"scripts2"]
+    },
+    "plesk": {
+        "ports": ["8443", "8880"],
+        "paths": ["/login_up.php", "/admin/index.php"],
+        "keywords": ["plesk"],
+        "patterns": [r":844[38]", r"plesk", r"login_up\.php"]
+    },
+    "directadmin": {
+        "ports": ["2222"],
+        "paths": ["/CMD_LOGIN", "/CMD_ADMIN_STATS"],
+        "keywords": ["directadmin"],
+        "patterns": [r":2222", r"directadmin", r"CMD_LOGIN"]
+    },
+    "cyberpanel": {
+        "ports": ["8090"],
+        "paths": ["/login", "/dashboard"],
+        "keywords": ["cyberpanel"],
+        "patterns": [r":8090", r"cyberpanel"]
+    },
+    "vestacp": {
+        "ports": ["8083"],
+        "paths": ["/login", "/admin"],
+        "keywords": ["vesta", "vestacp"],
+        "patterns": [r":8083", r"vesta"]
+    },
+    "hestiacp": {
+        "ports": ["8083"],
+        "paths": ["/login", "/admin"],
+        "keywords": ["hestia", "hestiacp"],
+        "patterns": [r":8083", r"hestia"]
+    },
+    "ispconfig": {
+        "ports": ["8080", "8081"],
+        "paths": ["/login", "/ispconfig"],
+        "keywords": ["ispconfig"],
+        "patterns": [r":808[01]", r"ispconfig"]
+    },
+    "webmin": {
+        "ports": ["10000"],
+        "paths": ["/session_login.cgi", "/"],
+        "keywords": ["webmin"],
+        "patterns": [r":10000", r"webmin"]
+    },
+    "virtualmin": {
+        "ports": ["10000"],
+        "paths": ["/virtual-server", "/"],
+        "keywords": ["virtualmin"],
+        "patterns": [r":10000", r"virtualmin"]
+    },
+    "wordpress": {
+        "ports": ["80", "443"],
+        "paths": ["/wp-admin", "/wp-login.php", "/wp-content"],
+        "keywords": ["wordpress", "wp-admin", "wp-login"],
+        "patterns": [r"wp-admin", r"wp-login\.php", r"wordpress"]
+    },
+    "joomla": {
+        "ports": ["80", "443"],
+        "paths": ["/administrator", "/joomla"],
+        "keywords": ["joomla", "administrator"],
+        "patterns": [r"joomla", r"/administrator"]
+    },
+    "phpmyadmin": {
+        "ports": ["80", "443", "8080"],
+        "paths": ["/phpmyadmin", "/pma", "/phpMyAdmin"],
+        "keywords": ["phpmyadmin", "pma", "mysql"],
+        "patterns": [r"phpmyadmin", r"/pma", r"mysql"]
+    },
+    "ftp": {
+        "ports": ["21", "22"],
+        "paths": [],
+        "keywords": ["ftp"],
+        "patterns": [r"ftp://", r":21", r"ftp"]
+    },
+    "ssh": {
+        "ports": ["22"],
+        "paths": [],
+        "keywords": ["ssh"],
+        "patterns": [r"ssh://", r":22", r"ssh"]
+    }
+}
+
 # --- Keyboard Input Setup ---
 # Global variables for termios settings on POSIX
 _termios_settings_fd = None
@@ -485,6 +579,39 @@ def load_processed_files(log_path: str) -> Set[str]:
     return processed
 
 
+def create_platform_specific_output(output_dir: str, target_platform: str, unique_lines: Set[str], platform_results: Dict[str, List[str]]) -> str:
+    """
+    Create platform-specific output files organized by detected platforms.
+    Returns the path to the platform-specific output file.
+    """
+    if target_platform:
+        # Create platform-specific directory
+        platform_output_dir = os.path.join(output_dir, target_platform)
+        os.makedirs(platform_output_dir, exist_ok=True)
+        
+        # Create main platform output file
+        platform_output_file = os.path.join(platform_output_dir, f"{target_platform}_credentials.txt")
+        
+        # Write all lines from this platform to the file
+        platform_lines = []
+        for line in unique_lines:
+            # Re-parse to get platform info
+            parts = line.split('|')
+            if len(parts) >= 3:
+                url_part = parts[0]
+                detected_platform = detect_platform(line)
+                if detected_platform == target_platform or detected_platform == 'unknown':
+                    platform_lines.append(line)
+        
+        if platform_lines:
+            with open(platform_output_file, 'w') as f:
+                f.write('\n'.join(sorted(platform_lines)))
+            
+        logging.info(f"Platform-specific output saved: {platform_output_file} ({len(platform_lines)} lines)")
+        return platform_output_file
+    
+    return ""
+
 def log_processed_file(log_path: str, file_path: str):
     log_lock_path = log_path + '.lock'
     try:
@@ -583,6 +710,192 @@ def input_listener_thread(progress_state: Dict[str, Any]):
             logging.debug("Input listener thread exiting; no terminal settings to restore by this instance or raw mode was not enabled.")
     logging.debug("Input listener thread exiting gracefully.")
 
+
+def detect_platform(line: str) -> str:
+    """
+    Detect the platform type based on patterns in the credential line.
+    Returns the platform name or 'unknown' if no match found.
+    """
+    line_lower = line.lower()
+    
+    for platform, config in PLATFORM_PATTERNS.items():
+        # Check patterns
+        for pattern in config["patterns"]:
+            if re.search(pattern, line_lower):
+                return platform
+        
+        # Check ports
+        for port in config["ports"]:
+            if f":{port}" in line or f" {port}" in line:
+                return platform
+        
+        # Check paths
+        for path in config["paths"]:
+            if path.lower() in line_lower:
+                return platform
+                
+        # Check keywords
+        for keyword in config["keywords"]:
+            if keyword.lower() in line_lower:
+                return platform
+    
+    return "unknown"
+
+def improved_credential_parser(line_stripped: str) -> Dict[str, str]:
+    """
+    Enhanced credential parsing with better format detection and validation.
+    Returns dict with 'url', 'username', 'password', 'valid', 'platform' keys.
+    """
+    result = {
+        'url': '',
+        'username': '',
+        'password': '',
+        'valid': False,
+        'platform': 'unknown'
+    }
+    
+    # Detect platform first
+    result['platform'] = detect_platform(line_stripped)
+    
+    # Strategy 1: Pipe separator (|) - highest priority for clean format
+    if line_stripped.count('|') >= 2:
+        parts = line_stripped.split('|')
+        if len(parts) >= 3:
+            url_part = parts[0].strip()
+            user_part = parts[1].strip()
+            pass_part = parts[2].strip()
+            
+            # Validate and assign
+            if user_part and pass_part and len(user_part) >= 2 and len(pass_part) >= 2:
+                result['url'] = url_part
+                result['username'] = user_part
+                result['password'] = pass_part
+                result['valid'] = True
+                return result
+    
+    # Strategy 2: Semicolon separator (;)
+    elif line_stripped.count(';') >= 2:
+        parts = line_stripped.split(';')
+        if len(parts) >= 3:
+            url_part = parts[0].strip()
+            user_part = parts[1].strip()
+            pass_part = parts[2].strip()
+            
+            if user_part and pass_part and len(user_part) >= 2 and len(pass_part) >= 2:
+                result['url'] = url_part
+                result['username'] = user_part
+                result['password'] = pass_part
+                result['valid'] = True
+                return result
+    
+    # Strategy 3: Colon separator (:) - more complex due to URLs containing colons
+    elif line_stripped.count(':') >= 2:
+        # Handle the complex case where we need to find the right colon separators
+        # Look for patterns like: URL:username:password or username:password:URL
+        
+        # First try to find if there's a clear URL pattern
+        url_pattern = r'https?://[^\s:]+(?::\d+)?(?:/[^\s:]*)?'
+        url_match = re.search(url_pattern, line_stripped)
+        
+        if url_match:
+            url_part = url_match.group()
+            remaining = line_stripped.replace(url_part, '').strip()
+            
+            # Remove leading/trailing separators
+            remaining = remaining.strip(':;|, ')
+            
+            # Split remaining by colon to get user:pass
+            if ':' in remaining:
+                parts = remaining.split(':', 1)
+                if len(parts) == 2:
+                    user_part = parts[0].strip()
+                    pass_part = parts[1].strip()
+                    
+                    if user_part and pass_part and len(user_part) >= 2 and len(pass_part) >= 2:
+                        result['url'] = url_part
+                        result['username'] = user_part
+                        result['password'] = pass_part
+                        result['valid'] = True
+                        return result
+        else:
+            # No clear URL pattern, try standard right-to-left parsing
+            parts = line_stripped.split(':')
+            if len(parts) >= 3:
+                # Take last part as password, second-to-last as username
+                pass_part = parts[-1].strip()
+                user_part = parts[-2].strip()
+                url_part = ':'.join(parts[:-2]).strip()
+                
+                if user_part and pass_part and len(user_part) >= 2 and len(pass_part) >= 2:
+                    result['url'] = url_part
+                    result['username'] = user_part
+                    result['password'] = pass_part
+                    result['valid'] = True
+                    return result
+    
+    # Strategy 4: Space-separated format
+    elif ' ' in line_stripped:
+        parts = line_stripped.split()
+        if len(parts) >= 3:
+            # Try to identify URL, username, password by patterns
+            url_candidates = []
+            email_candidates = []
+            other_parts = []
+            
+            for part in parts:
+                if re.match(r'https?://', part) or ('.' in part and ('/' in part or any(tld in part.lower() for tld in ['.com', '.net', '.org', '.io', '.co']))):
+                    url_candidates.append(part)
+                elif '@' in part and '.' in part:
+                    email_candidates.append(part)
+                else:
+                    other_parts.append(part)
+            
+            # Assignment logic
+            if url_candidates and (email_candidates or other_parts):
+                url_part = url_candidates[0]
+                if email_candidates:
+                    user_part = email_candidates[0]
+                    pass_part = other_parts[0] if other_parts else ''
+                else:
+                    user_part = other_parts[0] if len(other_parts) > 0 else ''
+                    pass_part = other_parts[1] if len(other_parts) > 1 else ''
+                
+                if user_part and pass_part and len(user_part) >= 2 and len(pass_part) >= 2:
+                    result['url'] = url_part
+                    result['username'] = user_part
+                    result['password'] = pass_part
+                    result['valid'] = True
+                    return result
+            
+            # Fallback: assume first 3 parts are URL, username, password
+            elif len(parts) >= 3:
+                url_part = parts[0].strip()
+                user_part = parts[1].strip()
+                pass_part = parts[2].strip()
+                
+                if user_part and pass_part and len(user_part) >= 2 and len(pass_part) >= 2:
+                    result['url'] = url_part
+                    result['username'] = user_part
+                    result['password'] = pass_part
+                    result['valid'] = True
+                    return result
+    
+    # Strategy 5: Comma-separated format
+    elif ',' in line_stripped:
+        parts = line_stripped.split(',')
+        if len(parts) >= 3:
+            url_part = parts[0].strip()
+            user_part = parts[1].strip()
+            pass_part = parts[2].strip()
+            
+            if user_part and pass_part and len(user_part) >= 2 and len(pass_part) >= 2:
+                result['url'] = url_part
+                result['username'] = user_part
+                result['password'] = pass_part
+                result['valid'] = True
+                return result
+    
+    return result
 
 def process_file(
     file_path: str,
@@ -688,150 +1001,22 @@ def process_file(
                         continue
                 progress_state['hits'] += 1 # Count lines that pass keyword filter (or all if no keywords)
 
-                # Enhanced parsing logic for multiple formats
-                url_part = ""
-                user_part = ""
-                pass_part = ""
-                parsed_into_original_format = False
-
-                # Try different parsing strategies based on different separators
-                # Strategy 1: Check for pipe separator (|)
-                pipe_count = line_stripped.count('|')
-                if pipe_count >= 2:
-                    parts = line_stripped.split('|')
-                    if len(parts) >= 3:
-                        url_part = parts[0].strip()
-                        user_part = parts[1].strip()
-                        pass_part = parts[2].strip()
-                        parsed_into_original_format = True
+                # Use improved parsing logic
+                parsed_result = improved_credential_parser(line_stripped)
                 
-                # Strategy 2: Check for semicolon separator (;)
-                elif line_stripped.count(';') >= 2:
-                    parts = line_stripped.split(';')
-                    if len(parts) >= 3:
-                        url_part = parts[0].strip()
-                        user_part = parts[1].strip()
-                        pass_part = parts[2].strip()
-                        parsed_into_original_format = True
-                
-                # Strategy 3: Check for colon separator (:)
-                elif line_stripped.count(':') >= 2:
-                    # Handle special cases like "username:email@domain.com:password:url"
-                    if 'username:' in line_stripped.lower() and 'password:' in line_stripped.lower():
-                        # Extract from "username:email:password:url" format
-                        if line_stripped.lower().startswith('username:'):
-                            remaining = line_stripped[9:]  # Remove "username:"
-                            if ':password:' in remaining.lower():
-                                email_pass_url = remaining.split(':password:', 1)
-                                if len(email_pass_url) == 2:
-                                    user_part = email_pass_url[0].strip()
-                                    pass_url = email_pass_url[1].split(':', 1)
-                                    if len(pass_url) >= 2:
-                                        pass_part = pass_url[0].strip()
-                                        url_part = pass_url[1].strip()
-                                        parsed_into_original_format = True
-                    else:
-                        # Standard colon parsing - find rightmost separators
-                        last_colon_idx = line_stripped.rfind(':')
-                        if last_colon_idx != -1:
-                            pass_part_candidate = line_stripped[last_colon_idx + 1:].strip()
-                            remaining = line_stripped[:last_colon_idx]
-                            second_last_colon_idx = remaining.rfind(':')
-                            if second_last_colon_idx != -1:
-                                url_part = remaining[:second_last_colon_idx].strip()
-                                user_part = remaining[second_last_colon_idx + 1:].strip()
-                                pass_part = pass_part_candidate
-                                parsed_into_original_format = True
-                            else:
-                                user_part = remaining.strip()
-                                pass_part = pass_part_candidate
-                                url_part = ""
-                                parsed_into_original_format = True
-
-                # Strategy 4: Check for comma separator (,)
-                elif line_stripped.count(',') >= 2:
-                    parts = line_stripped.split(',')
-                    if len(parts) >= 3:
-                        url_part = parts[0].strip()
-                        user_part = parts[1].strip()
-                        pass_part = parts[2].strip()
-                        parsed_into_original_format = True
-
-                # Strategy 5: Space-separated format
-                elif ' ' in line_stripped:
-                    parts = line_stripped.split()
-                    if len(parts) >= 3:
-                        # Try to identify which part is URL, username, password
-                        url_candidates = []
-                        email_candidates = []
-                        other_parts = []
-                        
-                        for part in parts:
-                            if ('.' in part and ('/' in part or 'www.' in part.lower() or 'http' in part.lower() or '.com' in part.lower() or '.org' in part.lower() or '.net' in part.lower())):
-                                url_candidates.append(part)
-                            elif '@' in part and '.' in part:
-                                email_candidates.append(part)
-                            else:
-                                other_parts.append(part)
-                        
-                        # Try to assign based on patterns
-                        if len(url_candidates) >= 1 and len(email_candidates) >= 1 and len(other_parts) >= 1:
-                            url_part = url_candidates[0]
-                            user_part = email_candidates[0]
-                            pass_part = other_parts[0]
-                            parsed_into_original_format = True
-                        elif len(parts) == 3:
-                            # Default assignment for 3 parts
-                            if '@' in parts[0]:
-                                user_part = parts[0].strip()
-                                pass_part = parts[1].strip()
-                                url_part = parts[2].strip()
-                            elif '@' in parts[1]:
-                                url_part = parts[0].strip()
-                                user_part = parts[1].strip()
-                                pass_part = parts[2].strip()
-                            else:
-                                url_part = parts[0].strip()
-                                user_part = parts[1].strip()
-                                pass_part = parts[2].strip()
-                            parsed_into_original_format = True
-                
-                # Clean up parsed parts
-                if parsed_into_original_format:
-                    # Remove common prefixes/suffixes and clean up
-                    if url_part and not url_part.startswith('http'):
-                        if not ('.' in url_part and ('/' in url_part or 'www.' in url_part.lower())):
-                            # If url_part doesn't look like URL, try to reassign
-                            if '.' in pass_part and ('/' in pass_part or 'www.' in pass_part.lower() or '.com' in pass_part.lower()):
-                                url_part, pass_part = pass_part, url_part
+                if parsed_result['valid']:
+                    # Create output line in format: url|username|password
+                    output_line = f"{parsed_result['url']}|{parsed_result['username']}|{parsed_result['password']}"
                     
-                    # Ensure we have valid parts
-                    if user_part and pass_part: # URL can be empty but user and pass must exist
-                        parsed_into_original_format = True
-                    else:
-                        parsed_into_original_format = False
-                
-                # Validation and text line preparation
-                is_valid_components = False
-                output_line = "" # Initialize output_line
-
-                if parsed_into_original_format:
-                     # Validate components with relaxed validation
-                     if user_part and pass_part: # Only require user and pass, URL can be empty
-                         # Relaxed validation - just check for minimum requirements
-                         if len(user_part) >= 3 and len(pass_part) >= 3:
-                             is_valid_components = True
-                     
-                     if is_valid_components:
-                          # Create output line in format: url|username|password
-                          output_line = f"{url_part}|{user_part}|{pass_part}"
-                    
-                     # Add to unique lines if all checks pass and it's a new line
-                     if is_valid_components and output_line not in unique_lines:
+                    # Add to unique lines if it's a new line
+                    if output_line not in unique_lines:
                         unique_lines.add(output_line)
                         buffer.append(output_line)
                         added_count += 1
-                        logging.debug(f"Added unique line ({added_count} from {file_basename}): {output_line}")
+                        
+                        # Log with platform detection info
+                        platform_info = f"[{parsed_result['platform']}]" if parsed_result['platform'] != 'unknown' else ""
+                        logging.debug(f"Added unique line {platform_info} ({added_count} from {file_basename}): {output_line}")
 
                         # Write buffer to file if it's full
                         if len(buffer) >= buffer_max_size:
@@ -845,25 +1030,10 @@ def process_file(
                                  # Log error but continue if possible, data in buffer might be lost for this file if unrecoverable
                                  logging.error(f"Error writing buffer to output file for '{file_basename}': {write_e}. Data in buffer might be lost for this file.", exc_info=True)
                                  # Potentially set processing_error = True if this is critical
-                
-                # Logging for skipped lines (if they passed keyword filter but failed parsing/validation)
-                if not (parsed_into_original_format and is_valid_components) and line_stripped:
-                     if parsed_into_original_format: # Parsed, but failed validation
-                         validation_failed_reasons = []
-                         if not is_valid_components: # Detailed reasons for validation failure
-                              if not user_part or len(user_part) < 3: validation_failed_reasons.append("invalid_user")
-                              if not pass_part or len(pass_part) < 3: validation_failed_reasons.append("invalid_pass")
-                         logging.debug(f"Skipped line (failed validation after parse): Reasons=[{', '.join(validation_failed_reasons)}] Parts=URL='{url_part[:40]}', User='{user_part[:40]}', Pass='{pass_part[:40]}' from line: '{line_stripped[:80]}...'")
-                     else: # Did not parse into the expected format
-                         if keywords: # If keywords were used, this line matched but didn't parse
-                             logging.debug(f"Skipped line (did not fit any parse structure after keyword match): '{line_stripped[:80]}...'")
-                         elif not keywords: # No keywords, processing all lines, this one didn't parse
-                             # Log more carefully for non-keyword mode as many lines might be "unexpected"
-                             if len(line_stripped) > 10: # Avoid flooding logs with tiny unparsable lines
-                                logging.warning(f"Line with unexpected format skipped (did not fit any parse structure): '{line_stripped[:80]}...'")
-                             else:
-                                 logging.debug(f"Skipped short line with unexpected format (did not fit any parse structure): '{line_stripped[:80]}...'")
-
+                else:
+                    # Log parsing failures for debugging
+                    if line_stripped and len(line_stripped) > 10:
+                        logging.debug(f"Failed to parse line: '{line_stripped[:80]}...'")
     except FileNotFoundError: # Should be caught by initial check, but as a safeguard here too
         logging.error(f"File not found during processing loop for '{file_path}'! Skipping this file.", exc_info=True)
         processing_error = True
@@ -1044,150 +1214,22 @@ def process_file_regex(
                     
                 progress_state['hits'] += 1 # Count lines that pass regex filter
 
-                # Enhanced parsing logic for multiple formats (same as original process_file)
-                url_part = ""
-                user_part = ""
-                pass_part = ""
-                parsed_into_original_format = False
-
-                # Try different parsing strategies based on different separators
-                # Strategy 1: Check for pipe separator (|)
-                pipe_count = line_stripped.count('|')
-                if pipe_count >= 2:
-                    parts = line_stripped.split('|')
-                    if len(parts) >= 3:
-                        url_part = parts[0].strip()
-                        user_part = parts[1].strip()
-                        pass_part = parts[2].strip()
-                        parsed_into_original_format = True
+                # Use improved parsing logic
+                parsed_result = improved_credential_parser(line_stripped)
                 
-                # Strategy 2: Check for semicolon separator (;)
-                elif line_stripped.count(';') >= 2:
-                    parts = line_stripped.split(';')
-                    if len(parts) >= 3:
-                        url_part = parts[0].strip()
-                        user_part = parts[1].strip()
-                        pass_part = parts[2].strip()
-                        parsed_into_original_format = True
-                
-                # Strategy 3: Check for colon separator (:)
-                elif line_stripped.count(':') >= 2:
-                    # Handle special cases like "username:email@domain.com:password:url"
-                    if 'username:' in line_stripped.lower() and 'password:' in line_stripped.lower():
-                        # Extract from "username:email:password:url" format
-                        if line_stripped.lower().startswith('username:'):
-                            remaining = line_stripped[9:]  # Remove "username:"
-                            if ':password:' in remaining.lower():
-                                email_pass_url = remaining.split(':password:', 1)
-                                if len(email_pass_url) == 2:
-                                    user_part = email_pass_url[0].strip()
-                                    pass_url = email_pass_url[1].split(':', 1)
-                                    if len(pass_url) >= 2:
-                                        pass_part = pass_url[0].strip()
-                                        url_part = pass_url[1].strip()
-                                        parsed_into_original_format = True
-                    else:
-                        # Standard colon parsing - find rightmost separators
-                        last_colon_idx = line_stripped.rfind(':')
-                        if last_colon_idx != -1:
-                            pass_part_candidate = line_stripped[last_colon_idx + 1:].strip()
-                            remaining = line_stripped[:last_colon_idx]
-                            second_last_colon_idx = remaining.rfind(':')
-                            if second_last_colon_idx != -1:
-                                url_part = remaining[:second_last_colon_idx].strip()
-                                user_part = remaining[second_last_colon_idx + 1:].strip()
-                                pass_part = pass_part_candidate
-                                parsed_into_original_format = True
-                            else:
-                                user_part = remaining.strip()
-                                pass_part = pass_part_candidate
-                                url_part = ""
-                                parsed_into_original_format = True
-
-                # Strategy 4: Check for comma separator (,)
-                elif line_stripped.count(',') >= 2:
-                    parts = line_stripped.split(',')
-                    if len(parts) >= 3:
-                        url_part = parts[0].strip()
-                        user_part = parts[1].strip()
-                        pass_part = parts[2].strip()
-                        parsed_into_original_format = True
-
-                # Strategy 5: Space-separated format
-                elif ' ' in line_stripped:
-                    parts = line_stripped.split()
-                    if len(parts) >= 3:
-                        # Try to identify which part is URL, username, password
-                        url_candidates = []
-                        email_candidates = []
-                        other_parts = []
-                        
-                        for part in parts:
-                            if ('.' in part and ('/' in part or 'www.' in part.lower() or 'http' in part.lower() or '.com' in part.lower() or '.org' in part.lower() or '.net' in part.lower())):
-                                url_candidates.append(part)
-                            elif '@' in part and '.' in part:
-                                email_candidates.append(part)
-                            else:
-                                other_parts.append(part)
-                        
-                        # Try to assign based on patterns
-                        if len(url_candidates) >= 1 and len(email_candidates) >= 1 and len(other_parts) >= 1:
-                            url_part = url_candidates[0]
-                            user_part = email_candidates[0]
-                            pass_part = other_parts[0]
-                            parsed_into_original_format = True
-                        elif len(parts) == 3:
-                            # Default assignment for 3 parts
-                            if '@' in parts[0]:
-                                user_part = parts[0].strip()
-                                pass_part = parts[1].strip()
-                                url_part = parts[2].strip()
-                            elif '@' in parts[1]:
-                                url_part = parts[0].strip()
-                                user_part = parts[1].strip()
-                                pass_part = parts[2].strip()
-                            else:
-                                url_part = parts[0].strip()
-                                user_part = parts[1].strip()
-                                pass_part = parts[2].strip()
-                            parsed_into_original_format = True
-                
-                # Clean up parsed parts
-                if parsed_into_original_format:
-                    # Remove common prefixes/suffixes and clean up
-                    if url_part and not url_part.startswith('http'):
-                        if not ('.' in url_part and ('/' in url_part or 'www.' in url_part.lower())):
-                            # If url_part doesn't look like URL, try to reassign
-                            if '.' in pass_part and ('/' in pass_part or 'www.' in pass_part.lower() or '.com' in pass_part.lower()):
-                                url_part, pass_part = pass_part, url_part
+                if parsed_result['valid']:
+                    # Create output line in format: url|username|password
+                    output_line = f"{parsed_result['url']}|{parsed_result['username']}|{parsed_result['password']}"
                     
-                    # Ensure we have valid parts
-                    if user_part and pass_part: # URL can be empty but user and pass must exist
-                        parsed_into_original_format = True
-                    else:
-                        parsed_into_original_format = False
-                
-                # Validation and text line preparation
-                is_valid_components = False
-                output_line = "" # Initialize output_line
-
-                if parsed_into_original_format:
-                     # Validate components with relaxed validation
-                     if user_part and pass_part: # Only require user and pass, URL can be empty
-                         # Relaxed validation - just check for minimum requirements
-                         if len(user_part) >= 3 and len(pass_part) >= 3:
-                             is_valid_components = True
-                     
-                     if is_valid_components:
-                          # Create output line in format: url|username|password
-                          output_line = f"{url_part}|{user_part}|{pass_part}"
-                    
-                     # Add to unique lines if all checks pass and it's a new line
-                     if is_valid_components and output_line not in unique_lines:
+                    # Add to unique lines if it's a new line
+                    if output_line not in unique_lines:
                         unique_lines.add(output_line)
                         buffer.append(output_line)
                         added_count += 1
-                        logging.debug(f"Added unique line ({added_count} from {file_basename}): {output_line}")
+                        
+                        # Log with platform detection info
+                        platform_info = f"[{parsed_result['platform']}]" if parsed_result['platform'] != 'unknown' else ""
+                        logging.debug(f"Added unique line {platform_info} ({added_count} from {file_basename}): {output_line}")
 
                         # Write buffer to file if it's full
                         if len(buffer) >= buffer_max_size:
@@ -1200,19 +1242,10 @@ def process_file_regex(
                             except Exception as write_e:
                                  # Log error but continue if possible, data in buffer might be lost for this file if unrecoverable
                                  logging.error(f"Error writing buffer to output file for '{file_basename}': {write_e}. Data in buffer might be lost for this file.", exc_info=True)
-                                 # Potentially set processing_error = True if this is critical
-                
-                # Logging for skipped lines (if they passed regex filter but failed parsing/validation)
-                if not (parsed_into_original_format and is_valid_components) and line_stripped:
-                     if parsed_into_original_format: # Parsed, but failed validation
-                         validation_failed_reasons = []
-                         if not is_valid_components: # Detailed reasons for validation failure
-                              if not user_part or len(user_part) < 3: validation_failed_reasons.append("invalid_user")
-                              if not pass_part or len(pass_part) < 3: validation_failed_reasons.append("invalid_pass")
-                         logging.debug(f"Skipped line (failed validation after parse): Reasons=[{', '.join(validation_failed_reasons)}] Parts=URL='{url_part[:40]}', User='{user_part[:40]}', Pass='{pass_part[:40]}' from line: '{line_stripped[:80]}...'")
-                     else: # Did not parse into the expected format
-                         logging.debug(f"Skipped line (failed to parse into format): '{line_stripped[:80]}...'")
-
+                else:
+                    # Log parsing failures for debugging
+                    if line_stripped and len(line_stripped) > 10:
+                        logging.debug(f"Failed to parse line: '{line_stripped[:80]}...'")
         # Write any remaining buffer content
         if buffer:
             logging.debug(f"Writing final buffer ({len(buffer)} lines) for '{file_basename}' to output file.")
@@ -1488,6 +1521,18 @@ def parse_arguments():
     parser.add_argument("--debug", action="store_true",
                         help="Enable debug logging output. This displays significantly more detailed internal processing information, \n"
                              "useful for troubleshooting parsing or validation issues.")
+    parser.add_argument("--mode", type=str, choices=["keyword", "regex", "platform"], default="keyword",
+                        help="Processing mode:\n"
+                             "keyword: Normal keyword mode (comma-separated keywords)\n"
+                             "regex: Regex keyword mode (regex patterns as input)\n"
+                             "platform: Platform parser mode (select specific platform for validation)")
+    parser.add_argument("--platform", type=str, 
+                        choices=["cpanel", "whm", "plesk", "directadmin", "cyberpanel", "vestacp", "hestiacp", 
+                                "ispconfig", "sentora", "keyhelp", "ajenti", "cloudpanel", "froxlor", "kloxo", 
+                                "interworx", "webmin", "virtualmin", "wordpress", "joomla", "popojicms", "ojs", 
+                                "moodle", "laravel", "whmcs", "owncloud", "phpmyadmin", "opensid", "simpeg", 
+                                "simrs", "cwp", "aapanel", "ftp", "ssh", "phppgadmin", "adminer"],
+                        help="Specific platform to target when using platform mode")
     return parser.parse_args()
 
 # Helper function for os.walk error handling
@@ -1623,17 +1668,18 @@ def main():
         input_dir_prompt = input(f"Input directory (default: '{DEFAULT_INPUT_DIR}'): ").strip()
         input_dir = input_dir_prompt or DEFAULT_INPUT_DIR # Use default if empty
         
-        # Mode selection - new feature
+        # Mode selection - enhanced with platform mode
         print("\n--- Mode Selection ---")
-        print("1. Original Function (keyword-based filtering)")
+        print("1. Keyword Mode (comma-separated keywords)")
         print("2. Regex Mode (regex pattern matching)")
+        print("3. Platform Mode (platform-specific detection)")
         
         mode_choice = ""
-        while mode_choice not in ['1', '2']:
+        while mode_choice not in ['1', '2', '3']:
             try:
-                mode_choice = input("Select mode (1 or 2): ").strip()
-                if mode_choice not in ['1', '2']:
-                    print("❌ Error: Please enter 1 or 2.")
+                mode_choice = input("Select mode (1, 2, or 3): ").strip()
+                if mode_choice not in ['1', '2', '3']:
+                    print("❌ Error: Please enter 1, 2, or 3.")
             except EOFError:
                 logging.warning("EOF received while waiting for mode selection. Exiting gracefully.")
                 print("\nExiting due to unexpected end of input stream.")
@@ -1642,11 +1688,12 @@ def main():
                 print("\nOperation cancelled by user.")
                 return 0
         
-        # Initialize variables for both modes
+        # Initialize variables for all modes
         keywords_str = ""
         keywords = []
         regex_patterns = []
         compiled_regex_patterns = []
+        target_platform = None
         
         if mode_choice == '1':
             # Original keyword mode
@@ -1659,26 +1706,96 @@ def main():
                 logging.warning("EOF received while waiting for keywords input during interactive prompt. Exiting gracefully.")
                 print("\nExiting due to unexpected end of input stream.")
                 return 0 # Graceful exit
-        else:
+        elif mode_choice == '2':
             # Regex mode
             regex_patterns = get_regex_input_interactive()
             compiled_regex_patterns = validate_regex_patterns(regex_patterns)
+        else:
+            # Platform mode
+            print("\n🎯 Available platforms:")
+            platforms = list(PLATFORM_PATTERNS.keys())
+            for i, platform in enumerate(platforms, 1):
+                print(f"{i:2d}. {platform}")
+            
+            try:
+                platform_choice = input("\nSelect platform number or name: ").strip()
+                if platform_choice.isdigit():
+                    platform_idx = int(platform_choice) - 1
+                    if 0 <= platform_idx < len(platforms):
+                        target_platform = platforms[platform_idx]
+                    else:
+                        print("❌ Invalid platform number")
+                        return 1
+                else:
+                    if platform_choice.lower() in platforms:
+                        target_platform = platform_choice.lower()
+                    else:
+                        print("❌ Invalid platform name")
+                        return 1
+                        
+                # Set keywords based on platform
+                platform_config = PLATFORM_PATTERNS[target_platform]
+                keywords = platform_config["keywords"] + [f":{port}" for port in platform_config["ports"]]
+                keywords_str = ",".join(keywords)
+                print(f"🔍 Using platform-specific keywords: {keywords_str}")
+                
+            except EOFError:
+                logging.warning("EOF received while waiting for platform selection. Exiting gracefully.")
+                print("\nExiting due to unexpected end of input stream.")
+                return 0
             
     else: # Non-interactive mode: use arguments
         input_dir = args.input
-        keywords_str = args.keywords
-        # Process keywords: split, strip, lowercase, remove empty
-        keywords = [k.strip().lower() for k in keywords_str.split(',') if k.strip()]
-        # In non-interactive mode, default to original keyword mode
-        mode_choice = '1'
-        regex_patterns = []
-        compiled_regex_patterns = []
+        mode_choice = getattr(args, 'mode', 'keyword')
+        
+        if mode_choice == 'keyword':
+            keywords_str = args.keywords
+            # Process keywords: split, strip, lowercase, remove empty
+            keywords = [k.strip().lower() for k in keywords_str.split(',') if k.strip()]
+            mode_choice = '1'  # Convert to numeric for compatibility
+            regex_patterns = []
+            compiled_regex_patterns = []
+            target_platform = None
+        elif mode_choice == 'regex':
+            # For non-interactive regex mode, use keywords as regex patterns
+            regex_patterns = [args.keywords] if args.keywords else []
+            compiled_regex_patterns = validate_regex_patterns(regex_patterns)
+            mode_choice = '2'  # Convert to numeric for compatibility
+            keywords = []
+            keywords_str = ""
+            target_platform = None
+        elif mode_choice == 'platform':
+            target_platform = getattr(args, 'platform', None)
+            if not target_platform:
+                print("❌ Error: Platform mode requires --platform argument")
+                return 1
+            if target_platform not in PLATFORM_PATTERNS:
+                print(f"❌ Error: Unknown platform '{target_platform}'")
+                return 1
+                
+            # Set keywords based on platform
+            platform_config = PLATFORM_PATTERNS[target_platform]
+            keywords = platform_config["keywords"] + [f":{port}" for port in platform_config["ports"]]
+            keywords_str = ",".join(keywords)
+            mode_choice = '3'  # Platform mode
+            regex_patterns = []
+            compiled_regex_patterns = []
+        else:
+            # Default to keyword mode for backward compatibility
+            keywords_str = args.keywords
+            keywords = [k.strip().lower() for k in keywords_str.split(',') if k.strip()]
+            mode_choice = '1'
+            regex_patterns = []
+            compiled_regex_patterns = []
+            target_platform = None
 
-    logging.debug(f"Mode selected: {'Keyword' if mode_choice == '1' else 'Regex'}")
+    logging.debug(f"Mode selected: {'Keyword' if mode_choice == '1' else 'Regex' if mode_choice == '2' else 'Platform'}")
     if mode_choice == '1':
         logging.debug(f"Keywords list for filtering: {keywords}")
-    else:
+    elif mode_choice == '2':
         logging.debug(f"Regex patterns for filtering: {regex_patterns}")
+    else:
+        logging.debug(f"Platform mode: {target_platform}, Keywords: {keywords}")
 
     # Validate input directory
     if not os.path.isdir(input_dir):
@@ -1689,10 +1806,13 @@ def main():
     if IS_INTERACTIVE_TTY: # Provide feedback in interactive mode
         if mode_choice == '1':
             print(f"🔍 Keywords to search: {keywords if keywords else 'ALL (no filter)'}")
-        else:
+        elif mode_choice == '2':
             print(f"🔍 Regex patterns to search: {len(regex_patterns)} pattern(s)")
             for i, pattern in enumerate(regex_patterns, 1):
                 print(f"  {i}. {pattern}")
+        else:
+            print(f"🎯 Platform mode: {target_platform}")
+            print(f"🔍 Platform-specific keywords: {keywords}")
         print(f"📁 Output for this instance will be saved to: {os.path.abspath(output_path)}")
 
     # Load list of already processed files for resume capability
@@ -1833,8 +1953,8 @@ def main():
                     logging.debug(f"Main loop starting processing for file '{file_path}'. Calling process_file...")
 
                     # Process the current file based on selected mode
-                    if mode_choice == '1':
-                        # Original keyword mode
+                    if mode_choice == '1' or mode_choice == '3':
+                        # Keyword mode or Platform mode (both use keyword filtering)
                         lines_added_from_file = process_file(
                             file_path=file_path,
                             keywords=keywords,
@@ -1854,7 +1974,7 @@ def main():
                             progress_state=progress_state
                         )
                     
-                    function_used = "process_file" if mode_choice == '1' else "process_file_regex"
+                    function_used = "process_file" if mode_choice in ['1', '3'] else "process_file_regex"
                     logging.debug(f"{function_used} for '{os.path.basename(file_path)}' returned result: {lines_added_from_file}")
 
                     # Handle result of file processing
@@ -1924,6 +2044,20 @@ def main():
         final_count_after_run_instance_file = sort_and_deduplicate(output_path)
         logging.debug(f"Final unique lines in '{os.path.basename(output_path)}' after sort/dedupe: {final_count_after_run_instance_file:,}.")
 
+        # Create platform-specific output if in platform mode
+        platform_output_file = ""
+        if mode_choice == '3' and target_platform and final_count_after_run_instance_file > 0:
+            # Read the finalized lines and create platform-specific output
+            try:
+                with open(output_path, 'r') as f:
+                    finalized_lines = set(line.strip() for line in f if line.strip())
+                
+                platform_output_file = create_platform_specific_output(
+                    output_dir, target_platform, finalized_lines, {}
+                )
+            except Exception as e:
+                logging.error(f"Error creating platform-specific output: {e}", exc_info=True)
+
         # Perform merge operation if requested and not interrupted by error/SIGINT
         merged_file_full_path = os.path.join(output_dir, args.merge_file)
         merged_count = -1 # Initialize to indicate not run or failed
@@ -1986,6 +2120,10 @@ def main():
             if reported_final_count > 0:
                 if final_count_after_run_instance_file > 0 and os.path.exists(output_path) and os.path.getsize(output_path) > 0:
                      print(f"📄 This instance's sorted output saved to: {os.path.abspath(output_path)}")
+                
+                # Show platform-specific output if created
+                if platform_output_file and os.path.exists(platform_output_file):
+                    print(f"🎯 Platform-specific output ({target_platform}) saved to: {os.path.abspath(platform_output_file)}")
                 
                 if args.merge and not exit_flag and merged_count > 0 and os.path.exists(merged_file_full_path) and os.path.getsize(merged_file_full_path) > 0:
                      print(f"📄 All relevant files merged into: {os.path.abspath(merged_file_full_path)}")
