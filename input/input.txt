@@ -1,0 +1,1072 @@
+# =============================================================================
+# COMPREHENSIVE CREDENTIAL FORMAT LIST FOR SECURITY TESTING
+# =============================================================================
+
+# ===== HOSTING CONTROL PANELS =====
+
+# cPanel (Most Popular Hosting Panel)
+https://example.com:2083|admin|cpanel123
+https://example.com/cpanel:cpaneluser:cpanelpass
+example.com:2083;webmaster;hosting123
+https://sub.example.com:2083 cpanel_admin cpanel_secret
+cpanel.example.com#admin#cpadmin123
+https://example.com:2082|demo|demo123
+http://cpanel.example.com:2095|reseller|reseller123
+https://secure.example.com:2096:root:securepass
+example.com:2087;administrator;whm456
+https://cpanel.example.com/login#user#userpass789
+
+# WHM (Web Host Manager)
+https://example.com:2087|root|whmpass123
+example.com:2087:reseller:resellerpass
+https://whm.example.com;administrator;whm456
+whm.example.com admin whmadmin
+https://example.com:2086#root#rootpass
+http://whm.example.com:2095|master|masterpass
+https://server.example.com:2087:whmuser:whmpass789
+
+# Plesk Control Panel
+https://example.com:8443|admin|pleskpass123
+plesk.example.com:8443:root:plesk456
+https://example.com/plesk;plesk_admin;plesk789
+example.com:8443 administrator pleskadmin
+https://plesk.example.com#admin#plesk123
+http://plesk.example.com:8880|user|userplesk
+https://panel.example.com:8443:pleskuser:pleskpass789
+
+# DirectAdmin Panel
+https://example.com:2222|admin|dapass123
+directadmin.example.com:2222:root:da456
+https://example.com/directadmin;da_admin;da789
+example.com:2222 administrator directadmin
+https://da.example.com#admin#da123
+http://da.example.com:2221|user|userda
+https://panel.example.com:2222:dauser:dapass789
+
+# CWP (CentOS Web Panel)
+https://example.com:2030|admin|cwp123
+example.com:2030:cwpuser:cwppass
+https://cwp.example.com:2030;cwp_admin;cwp456
+example.com:2030 administrator cwpAdmin
+https://centos.example.com:2030#admin#cwp789
+http://example.com:2031|root|cwproot123
+https://panel.example.com:2030:user:userpass
+example.com:2082;cwpuser;cwpuserpass
+
+# aaPanel (BT Panel International)
+https://example.com:8888|admin|aapanel123
+example.com:8888:btuser:btpass
+https://aapanel.example.com:8888;aa_admin;aa456
+example.com:8888 administrator aaAdmin
+https://bt.example.com:8888#admin#aapanel789
+http://example.com:7800|panel|aapanel123
+https://panel.example.com:8888/login:aauser:aapass
+example.com:8888/bt;btadmin;btpass789
+
+# CyberPanel (LiteSpeed)
+https://example.com:8090|admin|cyberpanel123
+example.com:8090:cyberuser:cyberpass
+https://cyberpanel.example.com:8090;cyber_admin;cyber456
+example.com:8090 administrator cyberAdmin
+https://litespeed.example.com:8090#admin#cyber789
+https://example.com:8443|admin|cyberpanel123
+https://cyber.example.com:8443:cyberuser:cyberpass
+example.com:8443;cyberadmin;cyberpass789
+
+# VestaCP
+https://example.com:8083|admin|vestacp123
+example.com:8083:vestauser:vestapass
+https://vesta.example.com:8083;vesta_admin;vesta456
+example.com:8083 administrator vestaAdmin
+https://vestacp.example.com:8083#admin#vesta789
+http://vesta.example.com:8082|user|userpass
+
+# HestiaCP (VestaCP Fork)
+https://example.com:8083|admin|hestiacp123
+example.com:8083:hestiauser:hestiapass
+https://hestia.example.com:8083;hestia_admin;hestia456
+example.com:8083 administrator hestiaAdmin
+https://hestiacp.example.com:8083#admin#hestia789
+
+# ISPConfig Hosting Panel
+https://example.com:8080|admin|ispconfig123
+example.com:8080:ispconfig:isppass
+https://isp.example.com:8080;isp_admin;isp456
+example.com:8080 administrator ispAdmin
+https://ispconfig.example.com:8080#admin#isp789
+
+# Sentora Panel
+https://example.com|admin|sentora123
+example.com/etc/apps/webmail:sentorauser:sentorapass
+https://sentora.example.com;sentora_admin;sentora456
+example.com admin sentoraAdmin
+https://panel.example.com#admin#sentora789
+
+# KeyHelp Panel
+https://example.com:8443|admin|keyhelp123
+example.com:8443:keyhelpuser:keyhelppass
+https://keyhelp.example.com:8443;keyhelp_admin;keyhelp456
+example.com:8443 administrator keyhelpAdmin
+https://panel.example.com:8443#admin#keyhelp789
+
+# Ajenti Panel
+https://example.com:8000|root|ajenti123
+example.com:8000:ajentiuser:ajentipass
+https://ajenti.example.com:8000;ajenti_admin;ajenti456
+example.com:8000 administrator ajentiAdmin
+https://panel.example.com:8000#root#ajenti789
+
+# CloudPanel
+https://example.com:8443|admin|cloudpanel123
+example.com:8443:clouduser:cloudpass
+https://cloudpanel.example.com:8443;cloud_admin;cloud456
+example.com:8443 administrator cloudAdmin
+https://panel.example.com:8443#admin#cloudpanel789
+
+# Froxlor Panel
+https://example.com|admin|froxlor123
+example.com:froxloruser:froxlorpass
+https://froxlor.example.com;froxlor_admin;froxlor456
+example.com admin froxlorAdmin
+https://panel.example.com#admin#froxlor789
+
+# Kloxo/Kloxo-MR
+https://example.com:7778|admin|kloxo123
+example.com:7778:kloxouser:kloxopass
+https://kloxo.example.com:7778;kloxo_admin;kloxo456
+example.com:7778 administrator kloxoAdmin
+https://panel.example.com:7778#admin#kloxo789
+
+# InterWorx Control Panel
+https://example.com:2443|admin|interworx123
+example.com:2443:iwuser:iwpass
+https://interworx.example.com:2443;iw_admin;iw456
+example.com:2443 administrator iwAdmin
+https://panel.example.com:2443#admin#interworx789
+
+# Webmin System Admin
+https://example.com:10000|root|webmin123
+example.com:10000:webmin:wpass
+https://admin.example.com:10000;sys_admin;webmin456
+example.com:10000 administrator webminAdmin
+https://webmin.example.com:10000#root#webmin789
+
+# Virtualmin Hosting
+https://example.com:10000/virtual-server|admin|virtualmin123
+example.com:10000:virtualmin:vpass
+https://hosting.example.com:10000;vm_admin;vm456
+example.com:10000 admin vmAdmin
+https://virtualmin.example.com:10000#admin#vm789
+
+# ===== CONTENT MANAGEMENT SYSTEMS (CMS) =====
+
+# WordPress CMS
+https://example.com/wp-admin|admin|wordpress123
+example.com/wp-login.php:wpuser:wppass
+https://blog.example.com/wp-admin;wordpress;wp456
+example.com/wp-admin admin wpAdmin123
+https://site.example.com/wp-admin#wpuser#wp789
+http://example.com/wordpress|blogger|blog123
+https://wp.example.com/wp-login.php:editor:editorpass
+example.com/blog/wp-admin;author;authorpass
+https://news.example.com/wp-admin contributor contributorpass
+blog.example.com/wp-admin#subscriber#subpass
+
+# Joomla CMS
+https://example.com/administrator|admin|joomla123
+example.com/administrator:joomlauser:jpass
+https://site.example.com/administrator;super_admin;joomla456
+example.com/administrator admin joomlaAdmin
+https://joomla.example.com/administrator#admin#joomla789
+http://joomla.example.com/administrator|manager|managerpass
+https://cms.example.com/administrator:publisher:pubpass
+
+# Drupal CMS
+https://example.com/user/login|admin|drupal123
+example.com/admin:drupaladmin:dpass
+https://site.example.com/user;webmaster;drupal456
+example.com/user/login admin drupalAdmin
+https://drupal.example.com/user#admin#drupal789
+http://drupal.example.com/user/login|editor|editorpass
+https://cms.example.com/admin:moderator:modpass
+
+# TYPO3 CMS
+https://example.com/typo3|admin|typo3123
+example.com/typo3:typo3user:t3pass
+https://site.example.com/typo3;typo3_admin;typo3456
+example.com/typo3 admin typo3Admin
+https://typo3.example.com/typo3#admin#typo3789
+
+# Concrete5 CMS
+https://example.com/index.php/login|admin|concrete5123
+example.com/login:c5admin:c5pass
+https://site.example.com/dashboard;c5_admin;c5456
+example.com/dashboard admin c5Admin
+https://concrete5.example.com/login#admin#c5789
+
+# Ghost CMS/Blog
+https://example.com/ghost|admin|ghost123
+ghost.example.com:ghostuser:ghostpass
+https://blog.example.com/ghost;ghost_admin;ghost456
+example.com/ghost admin ghostAdmin
+https://ghost.example.com#admin#ghost789
+
+# Grav CMS
+https://example.com/admin|admin|grav123
+example.com/admin:gravuser:gravpass
+https://site.example.com/admin;grav_admin;grav456
+example.com/admin admin gravAdmin
+https://grav.example.com/admin#admin#grav789
+
+# ProcessWire CMS
+https://example.com/processwire|admin|processwire123
+example.com/admin:pwuser:pwpass
+https://site.example.com/processwire;pw_admin;pw456
+example.com/processwire admin pwAdmin
+https://processwire.example.com/admin#admin#pw789
+
+# Contao CMS
+https://example.com/contao|admin|contao123
+example.com/contao:contaouser:contaopass
+https://site.example.com/contao;contao_admin;contao456
+example.com/contao admin contaoAdmin
+https://contao.example.com/contao#admin#contao789
+
+# October CMS
+https://example.com/backend|admin|october123
+example.com/backend:octuser:octpass
+https://site.example.com/backend;oct_admin;oct456
+example.com/backend admin octAdmin
+https://october.example.com/backend#admin#oct789
+
+# Craft CMS
+https://example.com/admin|admin|craft123
+example.com/admin:craftuser:craftpass
+https://site.example.com/admin;craft_admin;craft456
+example.com/admin admin craftAdmin
+https://craft.example.com/admin#admin#craft789
+
+# Statamic CMS
+https://example.com/cp|admin|statamic123
+example.com/cp:statuser:statpass
+https://site.example.com/cp;stat_admin;stat456
+example.com/cp admin statAdmin
+https://statamic.example.com/cp#admin#stat789
+
+# Pimcore CMS/PIM
+https://example.com/admin|admin|pimcore123
+example.com/admin:pimuser:pimpass
+https://site.example.com/admin;pim_admin;pim456
+example.com/admin admin pimAdmin
+https://pimcore.example.com/admin#admin#pim789
+
+# eZ Platform/eZ Publish
+https://example.com/ez|admin|ezplatform123
+example.com/admin:ezuser:ezpass
+https://site.example.com/ez;ez_admin;ez456
+example.com/ez admin ezAdmin
+https://ezplatform.example.com/admin#admin#ez789
+
+# Bolt CMS
+https://example.com/bolt|admin|bolt123
+example.com/bolt:boltuser:boltpass
+https://site.example.com/bolt;bolt_admin;bolt456
+example.com/bolt admin boltAdmin
+https://bolt.example.com/bolt#admin#bolt789
+
+# SilverStripe CMS
+https://example.com/admin|admin|silverstripe123
+example.com/admin:ssuser:sspass
+https://site.example.com/admin;ss_admin;ss456
+example.com/admin admin ssAdmin
+https://silverstripe.example.com/admin#admin#ss789
+
+# ModX CMS
+https://example.com/manager|admin|modx123
+example.com/manager:modxuser:modxpass
+https://site.example.com/manager;modx_admin;modx456
+example.com/manager admin modxAdmin
+https://modx.example.com/manager#admin#modx789
+
+# Textpattern CMS
+https://example.com/textpattern|admin|textpattern123
+example.com/textpattern:txpuser:txppass
+https://site.example.com/textpattern;txp_admin;txp456
+example.com/textpattern admin txpAdmin
+https://textpattern.example.com/textpattern#admin#txp789
+
+# ===== INDONESIAN CMS & SYSTEMS =====
+
+# PopojiCMS (Indonesian CMS)
+https://example.com/admin|admin|popojicms123
+example.com/admin:popojiuser:popojipass
+https://site.example.com/admin;popoji_admin;popoji456
+example.com/admin admin popojiAdmin
+https://popojicms.example.com/admin#admin#popoji789
+http://example.com/popojicms|webmaster|popoji123
+https://example.com/popojicms/admin:popojiuser:popojipass
+example.com/cms/admin;popoji_admin;popoji456
+
+# Lokomedia CMS (Indonesian CMS)
+https://example.com/admin|admin|lokomedia123
+example.com/admin:lokouser:lokopass
+https://site.example.com/admin;loko_admin;loko456
+example.com/admin admin lokoAdmin
+https://lokomedia.example.com/admin#admin#loko789
+
+# Balitbang CMS (Indonesian Government CMS)
+https://example.com/admin|admin|balitbang123
+example.com/admin:balitbanguser:balitbangpass
+https://site.example.com/admin;balitbang_admin;balitbang456
+example.com/admin admin balitbangAdmin
+https://balitbang.example.com/admin#admin#balitbang789
+
+# SLiMS (Senayan Library Management System)
+https://example.com/admin|admin|slims123
+slims.example.com:libuser:slimspass
+https://library.example.com/admin;slims_admin;slims456
+example.com/slims admin slimsAdmin
+https://slims.example.com/admin#admin#slims789
+
+# OpenSID (Indonesian Village Information System)
+https://example.com/index.php/siteman|admin|opensid123
+opensid.example.com:siduser:opensidpass
+https://desa.example.com/siteman;opensid_admin;opensid456
+example.com/opensid admin opensidAdmin
+https://opensid.example.com/siteman#admin#opensid789
+
+# SIMPEG (Indonesian Employee Management)
+https://example.com/admin|admin|simpeg123
+simpeg.example.com:pegawai:simpegpass
+https://kepegawaian.example.com/admin;simpeg_admin;simpeg456
+example.com/simpeg admin simpegAdmin
+https://simpeg.example.com/admin#admin#simpeg789
+
+# SIMRS (Indonesian Hospital Management)
+https://example.com/admin|admin|simrs123
+simrs.example.com:dokter:simrspass
+https://rumahsakit.example.com/admin;simrs_admin;simrs456
+example.com/simrs admin simrsAdmin
+https://simrs.example.com/admin#admin#simrs789
+
+# SIKD (Indonesian Document Management)
+https://example.com/admin|admin|sikd123
+sikd.example.com:operator:sikdpass
+https://dokumen.example.com/admin;sikd_admin;sikd456
+example.com/sikd admin sikdAdmin
+https://sikd.example.com/admin#admin#sikd789
+
+# SIAKAD (Indonesian Academic Information System)
+https://example.com/admin|admin|siakad123
+siakad.example.com:dosen:siakadpass
+https://kampus.example.com/admin;siakad_admin;siakad456
+example.com/siakad admin siakadAdmin
+https://siakad.example.com/admin#admin#siakad789
+
+# PDDIKTI (Indonesian Higher Education Database)
+https://example.com/admin|admin|pddikti123
+pddikti.example.com:operator:pddiktipass
+https://dikti.example.com/admin;pddikti_admin;pddikti456
+example.com/pddikti admin pddiktiAdmin
+https://pddikti.example.com/admin#admin#pddikti789
+
+# EMIS (Indonesian Islamic Education Management)
+https://example.com/admin|admin|emis123
+emis.example.com:operator:emispass
+https://madrasah.example.com/admin;emis_admin;emis456
+example.com/emis admin emisAdmin
+https://emis.example.com/admin#admin#emis789
+
+# DAPODIK (Indonesian Education Data)
+https://example.com/admin|admin|dapodik123
+dapodik.example.com:ops:dapodikpass
+https://sekolah.example.com/admin;dapodik_admin;dapodik456
+example.com/dapodik admin dapodikAdmin
+https://dapodik.example.com/admin#admin#dapodik789
+
+# ===== E-COMMERCE PLATFORMS =====
+
+# Magento E-commerce
+https://example.com/admin|admin|magento123
+example.com/admin:magentoadmin:mpass
+https://shop.example.com/admin;store_admin;magento456
+example.com/admin admin magentoAdmin
+https://magento.example.com/admin#admin#magento789
+http://magento.example.com/admin_123|admin|admin123
+https://store.example.com/backend:storeowner:storepass
+
+# OpenCart E-commerce
+https://example.com/admin|admin|opencart123
+example.com/admin:ocadmin:ocpass
+https://store.example.com/admin;opencart_admin;oc456
+example.com/admin admin opencartAdmin
+https://opencart.example.com/admin#admin#oc789
+
+# PrestaShop E-commerce
+https://example.com/admin|admin|prestashop123
+example.com/admin:psadmin:pspass
+https://shop.example.com/admin;presta_admin;presta456
+example.com/admin admin prestaAdmin
+https://prestashop.example.com/admin#admin#presta789
+
+# osCommerce E-commerce
+https://example.com/admin|admin|oscommerce123
+example.com/admin:osadmin:ospass
+https://store.example.com/admin;osc_admin;osc456
+example.com/admin admin oscAdmin
+https://oscommerce.example.com/admin#admin#osc789
+
+# Zen Cart E-commerce
+https://example.com/admin|admin|zencart123
+example.com/admin:zcadmin:zcpass
+https://shop.example.com/admin;zen_admin;zen456
+example.com/admin admin zenAdmin
+https://zencart.example.com/admin#admin#zen789
+
+# WooCommerce (WordPress Plugin)
+https://example.com/wp-admin|admin|woocommerce123
+example.com/wp-admin:shopmanager:woopass
+https://shop.example.com/wp-admin;woo_admin;woo456
+example.com/wp-admin admin wooAdmin
+https://woocommerce.example.com/wp-admin#admin#woo789
+
+# Shopify (Hosted but sometimes self-hosted)
+https://example.myshopify.com/admin|admin|shopify123
+example.com/admin:shopifyuser:shopifypass
+https://shop.example.com/admin;shopify_admin;shopify456
+example.com/admin admin shopifyAdmin
+https://shopify.example.com/admin#admin#shopify789
+
+# ===== FRAMEWORK ADMIN PANELS =====
+
+# Laravel Framework
+https://example.com/admin|admin|laravel123
+example.com/login:laraveluser:lpass
+https://app.example.com/admin;laravel_admin;laravel456
+example.com/dashboard admin laravelAdmin
+https://laravel.example.com/admin#admin#laravel789
+http://laravel.example.com/nova|nova|novapass
+https://admin.example.com/horizon:horizon:horizonpass
+
+# CodeIgniter Framework
+https://example.com/admin|admin|codeigniter123
+example.com/auth:ciuser:cipass
+https://app.example.com/admin;ci_admin;ci456
+example.com/admin admin ciAdmin
+https://codeigniter.example.com/admin#admin#ci789
+
+# Django Framework
+https://example.com/admin|admin|django123
+example.com/admin:djangouser:djpass
+https://app.example.com/admin;django_admin;django456
+example.com/admin admin djangoAdmin
+https://django.example.com/admin#admin#django789
+
+# CakePHP Framework
+https://example.com/admin|admin|cakephp123
+example.com/admin:cakeuser:cakepass
+https://app.example.com/admin;cake_admin;cake456
+example.com/admin admin cakeAdmin
+https://cakephp.example.com/admin#admin#cake789
+
+# Symfony Framework
+https://example.com/admin|admin|symfony123
+example.com/admin:symuser:sympass
+https://app.example.com/admin;sym_admin;sym456
+example.com/admin admin symAdmin
+https://symfony.example.com/admin#admin#sym789
+
+# Yii Framework
+https://example.com/admin|admin|yii123
+example.com/admin:yiiuser:yiipass
+https://app.example.com/admin;yii_admin;yii456
+example.com/admin admin yiiAdmin
+https://yii.example.com/admin#admin#yii789
+
+# Zend Framework
+https://example.com/admin|admin|zend123
+example.com/admin:zenduser:zendpass
+https://app.example.com/admin;zend_admin;zend456
+example.com/admin admin zendAdmin
+https://zend.example.com/admin#admin#zend789
+
+# ===== DATABASE MANAGEMENT =====
+
+# phpMyAdmin Database
+https://example.com/phpmyadmin|root|mysql123
+example.com/phpmyadmin:dbuser:dbpass
+https://db.example.com/phpmyadmin;mysql_admin;mysql456
+example.com/phpmyadmin admin pmaAdmin
+https://phpmyadmin.example.com#root#mysql789
+example.com/pma|database|db123
+http://phpmyadmin.example.com:8080|phpmyadmin|phpmyadmin
+https://mysql.example.com/phpmyadmin:mysqluser:mysqlpass
+
+# phpPgAdmin (PostgreSQL)
+https://example.com/phppgadmin|postgres|postgres123
+example.com/phppgadmin:pguser:pgpass
+https://db.example.com/phppgadmin;pg_admin;pg456
+example.com/phppgadmin admin pgAdmin
+https://phppgadmin.example.com#postgres#pg789
+
+# Adminer Database Tool
+https://example.com/adminer.php|root|adminer123
+example.com/adminer:dbuser:dbpass
+https://db.example.com/adminer;db_admin;db456
+example.com/adminer admin adminerAdmin
+https://adminer.example.com#root#adminer789
+
+# MongoDB Express
+https://example.com:8081|admin|mongoexpress123
+example.com:8081:mongouser:mongopass
+https://mongo.example.com:8081;mongo_admin;mongo456
+example.com:8081 admin mongoAdmin
+https://mongoexpress.example.com:8081#admin#mongo789
+
+# Redis Commander
+https://example.com:8082|admin|rediscommander123
+example.com:8082:redisuser:redispass
+https://redis.example.com:8082;redis_admin;redis456
+example.com:8082 admin redisAdmin
+https://rediscommander.example.com:8082#admin#redis789
+
+# ===== ACADEMIC & JOURNAL SYSTEMS =====
+
+# OJS (Open Journal Systems)
+https://journal.example.com/index.php/journal|admin|ojs123
+ojs.example.com/index.php:editor:ojspass
+https://ejournal.example.com/ojs;ojs_admin;ojs456
+journal.example.com/index.php admin ojsAdmin
+https://openjournal.example.com/ojs#admin#ojs789
+http://example.com/ojs|manager|ojsmanager123
+https://example.com/ojs/index.php/journal:ojsuser:ojspass
+example.com/journal/index.php;journal_admin;ojs456
+
+# OJS 3.x Specific
+https://example.com/ojs3/index.php/journal|admin|ojs3123
+ojs3.example.com/index.php:editor:ojs3pass
+https://journal.example.com/index.php/demo;demo_admin;demo456
+example.com/ojs/index.php/test admin testAdmin
+https://pkp.example.com/ojs#admin#pkp789
+
+# DSpace Repository
+https://example.com/xmlui|admin|dspace123
+dspace.example.com:dspaceuser:dspacepass
+https://repository.example.com/xmlui;dspace_admin;dspace456
+example.com/dspace admin dspaceAdmin
+https://dspace.example.com/xmlui#admin#dspace789
+
+# EPrints Repository
+https://example.com/eprints|admin|eprints123
+eprints.example.com:eprintsuser:eprintspass
+https://repository.example.com/eprints;eprints_admin;eprints456
+example.com/eprints admin eprintsAdmin
+https://eprints.example.com#admin#eprints789
+
+# Fedora Repository
+https://example.com/fedora|fedora|fedora123
+fedora.example.com:fedorauser:fedorapass
+https://repository.example.com/fedora;fedora_admin;fedora456
+example.com/fedora admin fedoraAdmin
+https://fedora.example.com#admin#fedora789
+
+# ===== LEARNING MANAGEMENT SYSTEMS =====
+
+# Moodle LMS
+https://learn.example.com|admin|moodle123
+moodle.example.com:teacher:moodlepass
+https://lms.example.com;moodle_admin;moodle456
+learn.example.com admin moodleAdmin
+https://moodle.example.com#admin#moodle789
+http://moodle.example.com/login|student|studentpass
+https://elearning.example.com:course_creator:creatorpass
+
+# Claroline (Popular in Indonesia)
+https://example.com/claroline|admin|claroline123
+claroline.example.com:teacher:claropass
+https://kelas.example.com/claroline;claro_admin;claro456
+example.com/claroline admin claroAdmin
+https://claroline.example.com/admin#admin#claro789
+
+# ATutor
+https://example.com/atutor|admin|atutor123
+atutor.example.com:instructor:atutorpass
+https://tutorial.example.com/atutor;atutor_admin;atutor456
+example.com/atutor admin atutorAdmin
+https://atutor.example.com/admin#admin#atutor789
+
+# Chamilo LMS
+https://example.com/chamilo|admin|chamilo123
+chamilo.example.com:teacher:chamilopass
+https://learn.example.com/chamilo;chamilo_admin;chamilo456
+example.com/chamilo admin chamiloAdmin
+https://chamilo.example.com#admin#chamilo789
+
+# Canvas LMS
+https://example.com/canvas|admin|canvas123
+canvas.example.com:instructor:canvaspass
+https://learn.example.com/canvas;canvas_admin;canvas456
+example.com/canvas admin canvasAdmin
+https://canvas.example.com#admin#canvas789
+
+# ===== CLOUD & FILE MANAGEMENT =====
+
+# Nextcloud
+https://cloud.example.com|admin|nextcloud123
+nextcloud.example.com:clouduser:cloudpass
+https://files.example.com;nextcloud_admin;nextcloud456
+cloud.example.com admin nextcloudAdmin
+https://nextcloud.example.com#admin#nextcloud789
+
+# ownCloud
+https://cloud.example.com|admin|owncloud123
+owncloud.example.com:clouduser:owncloudpass
+https://files.example.com;owncloud_admin;owncloud456
+cloud.example.com admin owncloudAdmin
+https://owncloud.example.com#admin#owncloud789
+
+# Seafile
+https://seafile.example.com|admin|seafile123
+seafile.example.com:seauser:seafilepass
+https://files.example.com;seafile_admin;seafile456
+seafile.example.com admin seafileAdmin
+https://seafile.example.com#admin#seafile789
+
+# Pydio/Cells
+https://pydio.example.com|admin|pydio123
+pydio.example.com:pydiouser:pydiopass
+https://files.example.com;pydio_admin;pydio456
+pydio.example.com admin pydioAdmin
+https://pydio.example.com#admin#pydio789
+
+# ===== DEVELOPMENT TOOLS =====
+
+# GitLab
+https://git.example.com|admin|gitlab123
+gitlab.example.com:root:gitlabpass
+https://code.example.com;gitlab_admin;gitlab456
+git.example.com admin gitlabAdmin
+https://gitlab.example.com#root#gitlab789
+
+# Gitea
+https://git.example.com|admin|gitea123
+gitea.example.com:gituser:giteapass
+https://code.example.com;gitea_admin;gitea456
+git.example.com admin giteaAdmin
+https://gitea.example.com#admin#gitea789
+
+# Gogs
+https://git.example.com|admin|gogs123
+gogs.example.com:gituser:gogspass
+https://code.example.com;gogs_admin;gogs456
+git.example.com admin gogsAdmin
+https://gogs.example.com#admin#gogs789
+
+# Jenkins CI/CD
+https://jenkins.example.com|admin|jenkins123
+jenkins.example.com:jenkinsuser:jenkinspass
+https://ci.example.com;jenkins_admin;jenkins456
+jenkins.example.com admin jenkinsAdmin
+https://jenkins.example.com#admin#jenkins789
+
+# TeamCity
+https://teamcity.example.com|admin|teamcity123
+teamcity.example.com:tcuser:teamcitypass
+https://ci.example.com;teamcity_admin;teamcity456
+teamcity.example.com admin teamcityAdmin
+https://teamcity.example.com#admin#teamcity789
+
+# ===== MONITORING & ANALYTICS =====
+
+# Grafana
+https://grafana.example.com|admin|grafana123
+grafana.example.com:grafanauser:grafanapass
+https://monitoring.example.com;grafana_admin;grafana456
+grafana.example.com admin grafanaAdmin
+https://grafana.example.com#admin#grafana789
+
+# Kibana (Elastic)
+https://kibana.example.com|admin|kibana123
+kibana.example.com:kibanauser:kibanapass
+https://logs.example.com;kibana_admin;kibana456
+kibana.example.com admin kibanaAdmin
+https://kibana.example.com#admin#kibana789
+
+# Prometheus
+https://prometheus.example.com|admin|prometheus123
+prometheus.example.com:promuser:prometheuspass
+https://monitoring.example.com;prometheus_admin;prometheus456
+prometheus.example.com admin prometheusAdmin
+https://prometheus.example.com#admin#prometheus789
+
+# Zabbix
+https://zabbix.example.com|Admin|zabbix123
+zabbix.example.com:zabbixuser:zabbixpass
+https://monitoring.example.com;zabbix_admin;zabbix456
+zabbix.example.com admin zabbixAdmin
+https://zabbix.example.com#Admin#zabbix789
+
+# Nagios
+https://nagios.example.com/nagios|nagiosadmin|nagios123
+nagios.example.com:nagiosuser:nagiospass
+https://monitoring.example.com/nagios;nagios_admin;nagios456
+nagios.example.com nagiosadmin nagiosAdmin
+https://nagios.example.com#nagiosadmin#nagios789
+
+# ===== MAIL SERVERS =====
+
+# Roundcube Webmail
+https://mail.example.com|admin@example.com|roundcube123
+mail.example.com:mailuser:mailpass
+https://webmail.example.com;mail_admin;mail456
+mail.example.com admin@domain.com mailAdmin
+https://roundcube.example.com#email#mail789
+
+# SquirrelMail
+https://mail.example.com/squirrelmail|admin@example.com|squirrel123
+mail.example.com:mailuser:squirrelpass
+https://webmail.example.com/squirrelmail;mail_admin;squirrel456
+mail.example.com admin@domain.com squirrelAdmin
+https://squirrel.example.com#email#squirrel789
+
+# RainLoop
+https://mail.example.com/rainloop|admin|rainloop123
+rainloop.example.com:mailuser:rainlooppass
+https://webmail.example.com/rainloop;mail_admin;rainloop456
+mail.example.com admin rainloopAdmin
+https://rainloop.example.com#admin#rainloop789
+
+# PostfixAdmin
+https://mail.example.com/postfixadmin|admin|postfix123
+postfixadmin.example.com:postfixuser:postfixpass
+https://mail.example.com/postfixadmin;postfix_admin;postfix456
+mail.example.com admin postfixAdmin
+https://postfixadmin.example.com#admin#postfix789
+
+# iRedMail
+https://mail.example.com/iredadmin|admin@example.com|iredmail123
+iredmail.example.com:ireduser:iredpass
+https://mail.example.com/iredadmin;ired_admin;ired456
+mail.example.com admin@domain.com iredAdmin
+https://iredadmin.example.com#admin#ired789
+
+# ===== NETWORK SERVICES =====
+
+# FTP Services
+ftp://example.com:21|ftpuser|ftppass123
+example.com:21:ftp_admin:ftp456
+ftp.example.com;webmaster;ftp789
+example.com:21 ftpuser ftpAdmin
+sftp://example.com:22#sftpuser#sftp123
+ftp://ftp.example.com|anonymous|
+example.com:2121:ftpuser2:ftppass2
+https://example.com:21;ftpadmin;ftpadmin123
+
+# SSH Services
+ssh://example.com:22|root|ssh123
+example.com:22:sshuser:sshpass
+ssh.example.com;admin;ssh456
+example.com:22 root sshAdmin
+example.com:2222#sshuser#ssh789
+ssh://server.example.com:2222|admin|adminpass
+example.com:22:ubuntu:ubuntu123
+
+# Telnet Services
+telnet://example.com:23|admin|telnet123
+example.com:23:telnetuser:telnetpass
+telnet.example.com;root;telnet456
+example.com:23 admin telnetAdmin
+example.com:2323#telnetuser#telnet789
+
+# ===== VIRTUALIZATION & CONTAINERS =====
+
+# Proxmox VE
+https://example.com:8006|root|proxmox123
+proxmox.example.com:8006:pveuser:pvepass
+https://pve.example.com:8006;pve_admin;pve456
+example.com:8006 administrator pveAdmin
+https://proxmox.example.com:8006#root#pve789
+
+# VMware vCenter
+https://vcenter.example.com|administrator@vsphere.local|vmware123
+vcenter.example.com:vcuser:vcpass
+https://vmware.example.com;vc_admin;vc456
+vcenter.example.com administrator vmwareAdmin
+https://vcenter.example.com#administrator#vmware789
+
+# Hyper-V Manager
+https://hyperv.example.com|administrator|hyperv123
+hyperv.example.com:hvuser:hvpass
+https://hv.example.com;hv_admin;hv456
+hyperv.example.com administrator hypervAdmin
+https://hyperv.example.com#administrator#hyperv789
+
+# Docker Portainer
+https://portainer.example.com|admin|portainer123
+portainer.example.com:9000:portaineruser:portainerpass
+https://docker.example.com:9000;portainer_admin;portainer456
+portainer.example.com:9000 admin portainerAdmin
+https://portainer.example.com:9000#admin#portainer789
+
+# Rancher
+https://rancher.example.com|admin|rancher123
+rancher.example.com:rancheruser:rancherpass
+https://k8s.example.com;rancher_admin;rancher456
+rancher.example.com admin rancherAdmin
+https://rancher.example.com#admin#rancher789
+
+# ===== SECURITY TOOLS =====
+
+# pfSense Firewall
+https://pfsense.example.com|admin|pfsense123
+pfsense.example.com:pfuser:pfpass
+https://firewall.example.com;pf_admin;pf456
+pfsense.example.com admin pfAdmin
+https://pfsense.example.com#admin#pfsense789
+
+# OPNsense Firewall
+https://opnsense.example.com|root|opnsense123
+opnsense.example.com:opnuser:opnpass
+https://firewall.example.com;opn_admin;opn456
+opnsense.example.com root opnAdmin
+https://opnsense.example.com#root#opnsense789
+
+# Wazuh SIEM
+https://wazuh.example.com|admin|wazuh123
+wazuh.example.com:wazuhuser:wazuhpass
+https://siem.example.com;wazuh_admin;wazuh456
+wazuh.example.com admin wazuhAdmin
+https://wazuh.example.com#admin#wazuh789
+
+# OSSEC
+https://ossec.example.com|admin|ossec123
+ossec.example.com:ossecuser:ossecpass
+https://ids.example.com;ossec_admin;ossec456
+ossec.example.com admin ossecAdmin
+https://ossec.example.com#admin#ossec789
+
+# ===== NETWORK EQUIPMENT =====
+
+# Router Interfaces
+http://192.168.1.1|admin|admin
+192.168.0.1:admin:password
+http://10.0.0.1;admin;admin123
+192.168.1.1 admin password
+http://172.16.1.1#admin#admin
+http://192.168.1.1:8080|admin|router123
+https://router.example.com:admin:routerpass
+
+# Switch Management
+http://192.168.1.100|admin|switch123
+192.168.1.100:admin:admin
+http://switch.example.com;admin;switch456
+192.168.1.100 admin switchAdmin
+http://192.168.1.100#admin#switch789
+
+# Access Point Management
+http://192.168.1.200|admin|ap123
+192.168.1.200:admin:wireless
+http://ap.example.com;admin;ap456
+192.168.1.200 admin apAdmin
+http://192.168.1.200#admin#ap789
+
+# ===== IoT & EMBEDDED DEVICES =====
+
+# IP Cameras
+http://192.168.1.50|admin|camera123
+192.168.1.50:admin:admin
+http://camera.example.com;admin;cam456
+192.168.1.50 admin cameraAdmin
+http://192.168.1.50#admin#cam789
+http://192.168.1.50:8080|viewer|viewer123
+
+# NVR/DVR Systems
+http://192.168.1.60|admin|nvr123
+192.168.1.60:admin:admin
+http://nvr.example.com;admin;nvr456
+192.168.1.60 admin nvrAdmin
+http://192.168.1.60#admin#nvr789
+
+# Smart Home Hubs
+http://192.168.1.70|admin|smarthome123
+192.168.1.70:admin:admin
+http://hub.example.com;admin;hub456
+192.168.1.70 admin hubAdmin
+http://192.168.1.70#admin#hub789
+
+# ===== MIXED FORMAT VARIATIONS =====
+
+# Different Separators with URLs
+https://example.com|admin|password123
+https://example.com:admin:password123
+https://example.com;admin;password123
+https://example.com admin password123
+https://example.com#admin#password123
+
+# Different Order Variations
+admin|password123|https://example.com
+admin:password123:https://example.com
+admin;password123;https://example.com
+admin password123 https://example.com
+admin#password123#https://example.com
+
+# IP Address Variations
+192.168.1.1|admin|password123
+192.168.1.1:admin:password123
+192.168.1.1;admin;password123
+192.168.1.1 admin password123
+192.168.1.1#admin#password123
+
+# URL with Port Variations
+https://example.com:8080|admin|password123
+https://example.com:8080:admin:password123
+https://example.com:8080;admin;password123
+https://example.com:8080 admin password123
+https://example.com:8080#admin#password123
+
+# Mixed with Email as Username
+https://example.com|admin@example.com|password123
+example.com:user@domain.com:userpass
+https://mail.example.com;postmaster@example.com;mailpass
+example.com webmaster@example.com webpass
+https://admin.example.com#support@example.com#supportpass
+
+# Special Characters in Passwords
+https://example.com|admin|P@ssw0rd123!
+example.com:admin:P@$$w0rd
+https://example.com;admin;Pass123#
+example.com admin Pas$word!
+https://example.com#admin#P@ssw0rd$
+
+# Multiple Authentication Methods
+https://example.com/oauth|oauth_user|oauth_token_123
+example.com/api:api_key:abc123def456
+https://api.example.com;bearer_token;eyJhbGciOiJIUzI1NiIs
+example.com/jwt jwt_user jwt_token_here
+https://secure.example.com#saml_user#saml_response
+
+# Database Connection Strings
+mysql://user:pass@localhost:3306/database
+postgresql://user:pass@localhost:5432/database
+mongodb://user:pass@localhost:27017/database
+redis://user:pass@localhost:6379
+sqlite:///path/to/database.db
+
+# Custom Ports and Protocols
+https://example.com:9999|admin|custom123
+ldap://example.com:389:ldapuser:ldappass
+ldaps://example.com:636;secure_user;secure_pass
+vnc://example.com:5900 vnc_user vnc_pass
+rdp://example.com:3389#rdp_user#rdp_pass
+
+# ===== ADDITIONAL INDONESIAN SYSTEMS =====
+
+# Government Portal Systems
+https://example.go.id/admin|admin|government123
+portal.pemda.example.id:webmaster:pemda456
+https://dinas.example.go.id/admin;dinasadmin;dinas789
+example.go.id admin govAdmin
+https://bappeda.example.go.id#admin#bappeda123
+
+# School Management Systems
+https://sekolah.example.sch.id/admin|admin|sekolah123
+siakad.example.ac.id:dosen:siakad456
+https://smp.example.sch.id/admin;kepala_sekolah;sekolah789
+example.sch.id admin schoolAdmin
+https://tk.example.sch.id#admin#tk123
+
+# Hospital Information Systems
+https://rs.example.co.id/admin|admin|hospital123
+simrs.example.co.id:dokter:rs456
+https://klinik.example.co.id/admin;perawat;klinik789
+example.co.id admin hospitalAdmin
+https://puskesmas.example.go.id#admin#puskesmas123
+
+# Indonesian E-commerce
+https://toko.example.com/admin|admin|toko123
+olshop.example.id:penjual:olshop456
+https://marketplace.example.co.id/admin;seller;marketplace789
+example.co.id admin tokoAdmin
+https://jualbelionline.example.com#admin#jualbeli123
+
+# =============================================================================
+# IP ADDRESS RANGES WITH COMMON CREDENTIALS
+# =============================================================================
+
+# Private IP Ranges Class A (10.x.x.x)
+10.0.0.1|admin|admin
+10.0.0.1:root:password
+10.0.0.1;administrator;admin123
+10.0.0.1 admin password123
+10.0.0.1#root#root
+
+# Private IP Ranges Class B (172.16.x.x - 172.31.x.x)
+172.16.1.1|admin|admin
+172.16.1.1:root:password
+172.16.1.1;administrator;admin123
+172.16.1.1 admin password123
+172.16.1.1#root#root
+
+# Private IP Ranges Class C (192.168.x.x)
+192.168.1.1|admin|admin
+192.168.1.1:root:password
+192.168.1.1;administrator;admin123
+192.168.1.1 admin password123
+192.168.1.1#root#root
+
+# Localhost variations
+127.0.0.1|admin|admin
+localhost:root:password
+127.0.0.1;administrator;admin123
+localhost admin password123
+127.0.0.1#root#root
+
+# =============================================================================
+# PROTOCOL SPECIFIC FORMATS
+# =============================================================================
+
+# HTTP/HTTPS variants
+http://example.com|admin|password
+https://example.com:admin:password
+http://example.com;admin;password
+https://example.com admin password
+http://example.com#admin#password
+
+# FTP variants
+ftp://example.com|ftpuser|ftppass
+ftp://example.com:ftpuser:ftppass
+ftp://example.com;ftpuser;ftppass
+ftp://example.com ftpuser ftppass
+ftp://example.com#ftpuser#ftppass
+
+# SFTP variants
+sftp://example.com|sftpuser|sftppass
+sftp://example.com:sftpuser:sftppass
+sftp://example.com;sftpuser;sftppass
+sftp://example.com sftpuser sftppass
+sftp://example.com#sftpuser#sftppass
+
+# SSH variants
+ssh://example.com|sshuser|sshpass
+ssh://example.com:sshuser:sshpass
+ssh://example.com;sshuser;sshpass
+ssh://example.com sshuser sshpass
+ssh://example.com#sshuser#sshpass
+
+# Telnet variants
+telnet://example.com|telnetuser|telnetpass
+telnet://example.com:telnetuser:telnetpass
+telnet://example.com;telnetuser;telnetpass
+telnet://example.com telnetuser telnetpass
+telnet://example.com#telnetuser#telnetpass
+
+# LDAP variants
+ldap://example.com|ldapuser|ldappass
+ldap://example.com:ldapuser:ldappass
+ldap://example.com;ldapuser;ldappass
+ldap://example.com ldapuser ldappass
+ldap://example.com#ldapuser#ldappass
+
+# =============================================================================
+# END OF COMPREHENSIVE CREDENTIAL FORMAT LIST
+# =============================================================================

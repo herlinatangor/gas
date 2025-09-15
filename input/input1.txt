@@ -1,0 +1,734 @@
+https://example.com:2083/login/?login_only=1|cpaneluser|cpanel123
+cpaneluser|cpanel123|https://example.com:2083/login/?login_only=1
+192.168.1.1:2083|cpaneluser|cpanel123
+cpaneluser|cpanel123|192.168.1.1:2083
+example.com:2083|cpaneluser|cpanel123
+cpaneluser|cpanel123|example.com:2083
+https://example.com:2083/frontend/x3/index.html:cpaneluser:cpanel123
+cpaneluser:cpanel123:https://example.com:2083/frontend/x3/index.html
+192.168.1.1:2083:cpaneluser:cpanel123
+cpaneluser:cpanel123:192.168.1.1:2083
+example.com:2083:cpaneluser:cpanel123
+cpaneluser:cpanel123:example.com:2083
+192.168.1.1::2083:cpaneluser:cpanel123
+https://example.com:2083/login/?login_only=1;cpaneluser;cpanel123
+cpaneluser;cpanel123;https://example.com:2083/login/?login_only=1
+192.168.1.1;2083;cpaneluser;cpanel123
+cpaneluser;cpanel123;192.168.1.1:2083
+example.com 2083 cpaneluser cpanel123
+cpaneluser cpanel123 example.com:2083
+192.168.1.1 2083 cpaneluser cpanel123
+cpaneluser cpanel123 192.168.1.1:2083
+
+https://example.com:2096/|webmailuser|webmail123
+webmailuser|webmail123|https://example.com:2096/
+http://example.com:2095/horde/|horde|horde123
+horde|horde123|http://example.com:2095/horde/
+https://example.com:2096/roundcube/|roundcube|round123
+roundcube|round123|https://example.com:2096/roundcube/
+192.168.1.1:2096|webmailuser|webmail123
+webmailuser|webmail123|192.168.1.1:2096
+https://example.com:2087/scripts2/doautofixperms|root|whmpass123
+root|whmpass123|https://example.com:2087/scripts2/doautofixperms
+https://example.com:2087/whm-server-status|admin|whmpass456
+admin|whmpass456|https://example.com:2087/whm-server-status
+192.168.1.1:2087|root|whmpass123
+root|whmpass123|192.168.1.1:2087
+example.com:2087:root:whmpass123
+root:whmpass123:example.com:2087
+192.168.1.1:2087:root:whmpass123
+root:whmpass123:192.168.1.1:2087
+example.com:2087;root;whmpass123
+root;whmpass123;example.com:2087
+example.com 2087 root whmpass123
+root whmpass123 example.com:2087
+https://example.com:8443/login_up.php|admin|pleskpass123
+admin|pleskpass123|https://example.com:8443/login_up.php
+http://example.com:8880/admin/index.php|plesk|pleskpass456
+plesk|pleskpass456|http://example.com:8880/admin/index.php
+192.168.1.1:8443|admin|pleskpass123
+admin|pleskpass123|192.168.1.1:8443
+example.com:8443|admin|pleskpass123
+admin|pleskpass123|example.com:8443
+192.168.1.1:8443:admin:pleskpass123
+admin:pleskpass123:192.168.1.1:8443
+example.com:8443:admin:pleskpass123
+admin:pleskpass123:example.com:8443
+192.168.1.1::8443:admin:pleskpass123
+example.com:8443;admin;pleskpass123
+admin;pleskpass123;example.com:8443
+example.com 8443 admin pleskpass123
+admin pleskpass123 example.com:8443
+https://example.com:8443/admin/domain/list|domainadmin|domain123
+domainadmin|domain123|https://example.com:8443/admin/domain/list
+https://example.com:8443/admin/subscription/list|subscription|subpass456
+subscription|subpass456|https://example.com:8443/admin/subscription/list
+https://example.com:8443/smb/web/list|smbuser|smbpass123
+smbuser|smbpass123|https://example.com:8443/smb/web/list
+https://example.com:2222/CMD_LOGIN|admin|dapass123
+admin|dapass123|https://example.com:2222/CMD_LOGIN
+https://example.com:2222/CMD_ADMIN_STATS|da_admin|dapass456
+da_admin|dapass456|https://example.com:2222/CMD_ADMIN_STATS
+192.168.1.1:2222|admin|dapass123
+admin|dapass123|192.168.1.1:2222
+example.com:2222|admin|dapass123
+admin|dapass123|example.com:2222
+192.168.1.1:2222:admin:dapass123
+admin:dapass123:192.168.1.1:2222
+example.com:2222:admin:dapass123
+admin:dapass123:example.com:2222
+192.168.1.1::2222:admin:dapass123
+example.com:2222;admin;dapass123
+admin;dapass123;example.com:2222
+example.com 2222 admin dapass123
+admin dapass123 example.com:2222
+https://example.com:2222/CMD_FILE_MANAGER|filemanager|filepass123
+filemanager|filepass123|https://example.com:2222/CMD_FILE_MANAGER
+https://example.com:2222/CMD_DB|dbadmin|dbpass456
+dbadmin|dbpass456|https://example.com:2222/CMD_DB
+https://example.com:2222/CMD_EMAIL_POP|popuser|poppass789
+popuser|poppass789|https://example.com:2222/CMD_EMAIL_POP
+http://example.com:2030/login/index.php|admin|cwppass123
+admin|cwppass123|http://example.com:2030/login/index.php
+http://example.com:2030/admin/admin/admin_index.php|cwpadmin|cwppass456
+cwpadmin|cwppass456|http://example.com:2030/admin/admin/admin_index.php
+192.168.1.1:2030|admin|cwppass123
+admin|cwppass123|192.168.1.1:2030
+example.com:2030|admin|cwppass123
+admin|cwppass123|example.com:2030
+192.168.1.1:2030:admin:cwppass123
+admin:cwppass123:192.168.1.1:2030
+example.com:2030:admin:cwppass123
+admin:cwppass123:example.com:2030
+192.168.1.1::2030:admin:cwppass123
+example.com:2030;admin;cwppass123
+admin;cwppass123;example.com:2030
+example.com 2030 admin cwppass123
+admin cwppass123 example.com:2030
+http://example.com:2082/|user|userpass123
+user|userpass123|http://example.com:2082/
+https://example.com:2083/|webuser|userpass456
+webuser|userpass456|https://example.com:2083/
+192.168.1.1:2082|user|userpass123
+user|userpass123|192.168.1.1:2082
+https://example.com:8888/login|admin|aapass123
+admin|aapass123|https://example.com:8888/login
+http://example.com:7800/bt|btadmin|btpass456
+btadmin|btpass456|http://example.com:7800/bt
+192.168.1.1:8888|admin|aapass123
+admin|aapass123|192.168.1.1:8888
+example.com:8888|admin|aapass123
+admin|aapass123|example.com:8888
+192.168.1.1:8888:admin:aapass123
+admin:aapass123:192.168.1.1:8888
+example.com:8888:admin:aapass123
+admin:aapass123:example.com:8888
+192.168.1.1::8888:admin:aapass123
+example.com:8888;admin;aapass123
+admin;aapass123;example.com:8888
+example.com 8888 admin aapass123
+admin aapass123 example.com:8888
+https://example.com:8888/files|filemanager|filepass123
+filemanager|filepass123|https://example.com:8888/files
+https://example.com:8888/database|dbadmin|dbpass456
+dbadmin|dbpass456|https://example.com:8888/database
+https://example.com:8888/site|siteadmin|sitepass789
+siteadmin|sitepass789|https://example.com:8888/site
+http://example.com:8090/login/|admin|cyberpass123
+admin|cyberpass123|http://example.com:8090/login/
+http://example.com:8090/dataBases/|dbadmin|cyberpass456
+dbadmin|cyberpass456|http://example.com:8090/dataBases/
+https://example.com:8443/websites/|webadmin|cyberpass789
+webadmin|cyberpass789|https://example.com:8443/websites/
+192.168.1.1:8090|admin|cyberpass123
+admin|cyberpass123|192.168.1.1:8090
+example.com:8090|admin|cyberpass123
+admin|cyberpass123|example.com:8090
+192.168.1.1:8090:admin:cyberpass123
+admin:cyberpass123:192.168.1.1:8090
+example.com:8090:admin:cyberpass123
+admin:cyberpass123:example.com:8090
+192.168.1.1::8090:admin:cyberpass123
+example.com:8090;admin;cyberpass123
+admin;cyberpass123;example.com:8090
+example.com 8090 admin cyberpass123
+admin cyberpass123 example.com:8090
+http://example.com:8090/websites/|webadmin|webpass123
+webadmin|webpass123|http://example.com:8090/websites/
+https://example.com:8443/email/|emailadmin|emailpass456
+emailadmin|emailpass456|https://example.com:8443/email/
+http://example.com:8090/dns|dnsadmin|dnspass789
+dnsadmin|dnspass789|http://example.com:8090/dns
+https://example.com:8083/login/|admin|vestapass123
+admin|vestapass123|https://example.com:8083/login/
+https://example.com:8083/add/user/|useradmin|vestapass456
+useradmin|vestapass456|https://example.com:8083/add/user/
+https://example.com:8083/list/user/|listadmin|vestapass789
+listadmin|vestapass789|https://example.com:8083/list/user/
+192.168.1.1:8083|admin|vestapass123
+admin|vestapass123|192.168.1.1:8083
+example.com:8083|admin|vestapass123
+admin|vestapass123|example.com:8083
+192.168.1.1:8083:admin:vestapass123
+admin:vestapass123:192.168.1.1:8083
+example.com:8083:admin:vestapass123
+admin:vestapass123:example.com:8083
+192.168.1.1::8083:admin:vestapass123
+example.com:8083;admin;vestapass123
+admin;vestapass123;example.com:8083
+example.com 8083 admin vestapass123
+admin vestapass123 example.com:8083
+https://example.com:8083/list/web/|webadmin|webpass123
+webadmin|webpass123|https://example.com:8083/list/web/
+https://example.com:8083/list/dns/|dnsadmin|dnspass456
+dnsadmin|dnspass456|https://example.com:8083/list/dns/
+https://example.com:8083/list/mail/|mailadmin|mailpass789
+mailadmin|mailpass789|https://example.com:8083/list/mail/
+https://example.com:8083/login/|admin|hestiapass123
+admin|hestiapass123|https://example.com:8083/login/
+https://example.com:8083/reset/|resetadmin|hestiapass456
+resetadmin|hestiapass456|https://example.com:8083/reset/
+192.168.1.1:8083|admin|hestiapass123
+admin|hestiapass123|192.168.1.1:8083
+example.com:8083|admin|hestiapass123
+admin|hestiapass123|example.com:8083
+192.168.1.1:8083:admin:hestiapass123
+admin:hestiapass123:192.168.1.1:8083
+example.com:8083:admin:hestiapass123
+admin:hestiapass123:example.com:8083
+192.168.1.1::8083:admin:hestiapass123
+example.com:8083;admin;hestiapass123
+admin;hestiapass123;example.com:8083
+example.com 8083 admin hestiapass123
+admin hestiapass123 example.com:8083
+https://example.com:8080/login/index.php|admin|isppass123
+admin|isppass123|https://example.com:8080/login/index.php
+https://example.com:8080/sites/web_vhost_domain_edit.php|ispadmin|isppass456
+ispadmin|isppass456|https://example.com:8080/sites/web_vhost_domain_edit.php
+192.168.1.1:8080|admin|isppass123
+admin|isppass123|192.168.1.1:8080
+example.com:8080|admin|isppass123
+admin|isppass123|example.com:8080
+192.168.1.1:8080:admin:isppass123
+admin:isppass123:192.168.1.1:8080
+example.com:8080:admin:isppass123
+admin:isppass123:example.com:8080
+192.168.1.1::8080:admin:isppass123
+example.com:8080;admin;isppass123
+admin;isppass123;example.com:8080
+example.com 8080 admin isppass123
+admin isppass123 example.com:8080
+https://example.com/etc/apps/webmail/|admin|sentorapass123
+admin|sentorapass123|https://example.com/etc/apps/webmail/
+https://example.com/etc/apps/zpanelconfig/|zpaneladmin|sentorapass456
+zpaneladmin|sentorapass456|https://example.com/etc/apps/zpanelconfig/
+example.com|admin|sentorapass123
+admin|sentorapass123|example.com
+192.168.1.1|admin|sentorapass123
+admin|sentorapass123|192.168.1.1
+example.com:admin:sentorapass123
+admin:sentorapass123:example.com
+192.168.1.1:admin:sentorapass123
+admin:sentorapass123:192.168.1.1
+example.com;admin;sentorapass123
+admin;sentorapass123;example.com
+example.com admin sentorapass123
+admin sentorapass123 example.com
+https://example.com:8443/login|admin|keyhelppass123
+admin|keyhelppass123|https://example.com:8443/login
+https://example.com:8443/kh/login|khadmin|keyhelppass456
+khadmin|keyhelppass456|https://example.com:8443/kh/login
+192.168.1.1:8443|admin|keyhelppass123
+admin|keyhelppass123|192.168.1.1:8443
+example.com:8443|admin|keyhelppass123
+admin|keyhelppass123|example.com:8443
+192.168.1.1:8443:admin:keyhelppass123
+admin:keyhelppass123:192.168.1.1:8443
+example.com:8443:admin:keyhelppass123
+admin:keyhelppass123:example.com:8443
+192.168.1.1::8443:admin:keyhelppass123
+example.com:8443;admin;keyhelppass123
+admin;keyhelppass123;example.com:8443
+example.com 8443 admin keyhelppass123
+admin keyhelppass123 example.com:8443
+https://example.com:8000/view/login|root|ajentipass123
+root|ajentipass123|https://example.com:8000/view/login
+https://example.com:8000/ajenti:auth|ajentiadmin|ajentipass456
+ajentiadmin|ajentipass456|https://example.com:8000/ajenti:auth
+192.168.1.1:8000|root|ajentipass123
+root|ajentipass123|192.168.1.1:8000
+example.com:8000|root|ajentipass123
+root|ajentipass123|example.com:8000
+192.168.1.1:8000:root:ajentipass123
+root:ajentipass123:192.168.1.1:8000
+example.com:8000:root:ajentipass123
+root:ajentipass123:example.com:8000
+192.168.1.1::8000:root:ajentipass123
+example.com:8000;root;ajentipass123
+root;ajentipass123;example.com:8000
+example.com 8000 root ajentipass123
+root ajentipass123 example.com:8000
+https://example.com:8443/login|admin|cloudpass123
+admin|cloudpass123|https://example.com:8443/login
+https://example.com:8443/server|cloudadmin|cloudpass456
+cloudadmin|cloudpass456|https://example.com:8443/server
+https://example.com:8443/sites|siteadmin|cloudpass789
+siteadmin|cloudpass789|https://example.com:8443/sites
+192.168.1.1:8443|admin|cloudpass123
+admin|cloudpass123|192.168.1.1:8443
+example.com:8443|admin|cloudpass123
+admin|cloudpass123|example.com:8443
+192.168.1.1:8443:admin:cloudpass123
+admin:cloudpass123:192.168.1.1:8443
+example.com:8443:admin:cloudpass123
+admin:cloudpass123:example.com:8443
+192.168.1.1::8443:admin:cloudpass123
+example.com:8443;admin;cloudpass123
+admin;cloudpass123;example.com:8443
+example.com 8443 admin cloudpass123
+admin cloudpass123 example.com:8443
+https://example.com/froxlor/|admin|froxlorpass123
+admin|froxlorpass123|https://example.com/froxlor/
+https://example.com/admin/index.php|froxloradmin|froxlorpass456
+froxloradmin|froxlorpass456|https://example.com/admin/index.php
+example.com|admin|froxlorpass123
+admin|froxlorpass123|example.com
+192.168.1.1|admin|froxlorpass123
+admin|froxlorpass123|192.168.1.1
+example.com:admin:froxlorpass123
+admin:froxlorpass123:example.com
+192.168.1.1:admin:froxlorpass123
+admin:froxlorpass123:192.168.1.1
+example.com;admin;froxlorpass123
+admin;froxlorpass123;example.com
+example.com admin froxlorpass123
+admin froxlorpass123 example.com
+http://example.com:7778/login/|admin|kloxopass123
+admin|kloxopass123|http://example.com:7778/login/
+http://example.com:7778/htmllib/|kloxoadmin|kloxopass456
+kloxoadmin|kloxopass456|http://example.com:7778/htmllib/
+192.168.1.1:7778|admin|kloxopass123
+admin|kloxopass123|192.168.1.1:7778
+example.com:7778|admin|kloxopass123
+admin|kloxopass123|example.com:7778
+192.168.1.1:7778:admin:kloxopass123
+admin:kloxopass123:192.168.1.1:7778
+example.com:7778:admin:kloxopass123
+admin:kloxopass123:example.com:7778
+192.168.1.1::7778:admin:kloxopass123
+example.com:7778;admin;kloxopass123
+admin;kloxopass123;example.com:7778
+example.com 7778 admin kloxopass123
+admin kloxopass123 example.com:7778
+https://example.com:2443/nodeworx/|admin|interworxpass123
+admin|interworxpass123|https://example.com:2443/nodeworx/
+http://example.com:2080/siteworx/|iwadmin|interworxpass456
+iwadmin|interworxpass456|http://example.com:2080/siteworx/
+192.168.1.1:2443|admin|interworxpass123
+admin|interworxpass123|192.168.1.1:2443
+example.com:2443|admin|interworxpass123
+admin|interworxpass123|example.com:2443
+192.168.1.1:2443:admin:interworxpass123
+admin:interworxpass123:192.168.1.1:2443
+example.com:2443:admin:interworxpass123
+admin:interworxpass123:example.com:2443
+192.168.1.1::2443:admin:interworxpass123
+example.com:2443;admin;interworxpass123
+admin;interworxpass123;example.com:2443
+example.com 2443 admin interworxpass123
+admin interworxpass123 example.com:2443
+https://example.com:10000/session_login.cgi|root|webminpass123
+root|webminpass123|https://example.com:10000/session_login.cgi
+https://example.com:10000/config.cgi|webminadmin|webminpass456
+webminadmin|webminpass456|https://example.com:10000/config.cgi
+192.168.1.1:10000|root|webminpass123
+root|webminpass123|192.168.1.1:10000
+example.com:10000|root|webminpass123
+root|webminpass123|example.com:10000
+192.168.1.1:10000:root:webminpass123
+root:webminpass123:192.168.1.1:10000
+example.com:10000:root:webminpass123
+root:webminpass123:example.com:10000
+192.168.1.1::10000:root:webminpass123
+example.com:10000;root;webminpass123
+root;webminpass123;example.com:10000
+example.com 10000 root webminpass123
+root webminpass123 example.com:10000
+https://example.com:10000/virtual-server/|admin|virtualminpass123
+admin|virtualminpass123|https://example.com:10000/virtual-server/
+https://example.com:10000/mailbox/|vmadmin|virtualminpass456
+vmadmin|virtualminpass456|https://example.com:10000/mailbox/
+192.168.1.1:10000|admin|virtualminpass123
+admin|virtualminpass123|192.168.1.1:10000
+example.com:10000|admin|virtualminpass123
+admin|virtualminpass123|example.com:10000
+192.168.1.1:10000:admin:virtualminpass123
+admin:virtualminpass123:192.168.1.1:10000
+example.com:10000:admin:virtualminpass123
+admin:virtualminpass123:example.com:10000
+192.168.1.1::10000:admin:virtualminpass123
+example.com:10000;admin;virtualminpass123
+admin;virtualminpass123;example.com:10000
+example.com 10000 admin virtualminpass123
+admin virtualminpass123 example.com:10000
+https://example.com/wp-admin/|admin|wppass123
+admin|wppass123|https://example.com/wp-admin/
+https://example.com/wp-login.php|wpuser|wppass456
+wpuser|wppass456|https://example.com/wp-login.php
+http://example.com/wp-admin/admin-ajax.php|wordpress|wppass789
+wordpress|wppass789|http://example.com/wp-admin/admin-ajax.php
+example.com|admin|wppass123
+admin|wppass123|example.com
+192.168.1.1|admin|wppass123
+admin|wppass123|192.168.1.1
+example.com:admin:wppass123
+admin:wppass123:example.com
+192.168.1.1:admin:wppass123
+admin:wppass123:192.168.1.1
+example.com;admin;wppass123
+admin;wppass123;example.com
+example.com admin wppass123
+admin wppass123 example.com
+https://example.com/wp-admin/network/|networkadmin|networkpass123
+networkadmin|networkpass123|https://example.com/wp-admin/network/
+https://example.com/wp-admin/network/sites.php|superadmin|superpass456
+superadmin|superpass456|https://example.com/wp-admin/network/sites.php
+https://example.com/administrator/|admin|joomlapass123
+admin|joomlapass123|https://example.com/administrator/
+https://example.com/administrator/index.php|joomlauser|joomlapass456
+joomlauser|joomlapass456|https://example.com/administrator/index.php
+example.com|admin|joomlapass123
+admin|joomlapass123|example.com
+192.168.1.1|admin|joomlapass123
+admin|joomlapass123|192.168.1.1
+example.com:admin:joomlapass123
+admin:joomlapass123:example.com
+192.168.1.1:admin:joomlapass123
+admin:joomlapass123:192.168.1.1
+example.com;admin;joomlapass123
+admin;joomlapass123;example.com
+example.com admin joomlapass123
+admin joomlapass123 example.com
+https://example.com/administrator/components/com_admin/|comadmin|compass123
+comadmin|compass123|https://example.com/administrator/components/com_admin/
+https://example.com/administrator/modules/|moduleadmin|modulepass456
+moduleadmin|modulepass456|https://example.com/administrator/modules/
+https://example.com/administrator/templates/|templateadmin|templatepass789
+templateadmin|templatepass789|https://example.com/administrator/templates/
+https://example.com/user/login|admin|drupalpass123
+admin|drupalpass123|https://example.com/user/login
+https://example.com/admin/|drupaladmin|drupalpass456
+drupaladmin|drupalpass456|https://example.com/admin/
+http://example.com/node/add|drupaluser|drupalpass789
+drupaluser|drupalpass789|http://example.com/node/add
+example.com|admin|drupalpass123
+admin|drupalpass123|example.com
+192.168.1.1|admin|drupalpass123
+admin|drupalpass123|192.168.1.1
+example.com:admin:drupalpass123
+admin:drupalpass123:example.com
+192.168.1.1:admin:drupalpass123
+admin:drupalpass123:192.168.1.1
+example.com;admin;drupalpass123
+admin;drupalpass123;example.com
+example.com admin drupalpass123
+admin drupalpass123 example.com
+https://example.com/admin/config|configadmin|configpass123
+configadmin|configpass123|https://example.com/admin/config
+https://example.com/admin/structure|structureadmin|structurepass456
+structureadmin|structurepass456|https://example.com/admin/structure
+https://example.com/admin/people|peopleadmin|peoplepass789
+peopleadmin|peoplepass789|https://example.com/admin/people
+https://example.com/typo3/|admin|typo3pass123
+admin|typo3pass123|https://example.com/typo3/
+https://example.com/typo3/index.php|typo3user|typo3pass456
+typo3user|typo3pass456|https://example.com/typo3/index.php
+http://example.com/typo3/backend.php|typo3admin|typo3pass789
+typo3admin|typo3pass789|http://example.com/typo3/backend.php
+example.com|admin|typo3pass123
+admin|typo3pass123|example.com
+192.168.1.1|admin|typo3pass123
+admin|typo3pass123|192.168.1.1
+example.com:admin:typo3pass123
+admin:typo3pass123:example.com
+192.168.1.1:admin:typo3pass123
+admin:typo3pass123:192.168.1.1
+example.com;admin;typo3pass123
+admin;typo3pass123;example.com
+example.com admin typo3pass123
+admin typo3pass123 example.com
+https://example.com/index.php/login|admin|c5pass123
+admin|c5pass123|https://example.com/index.php/login
+https://example.com/dashboard/|c5admin|c5pass456
+c5admin|c5pass456|https://example.com/dashboard/
+http://example.com/index.php/dashboard|c5user|c5pass789
+c5user|c5pass789|http://example.com/index.php/dashboard
+example.com|admin|c5pass123
+admin|c5pass123|example.com
+192.168.1.1|admin|c5pass123
+admin|c5pass123|192.168.1.1
+example.com:admin:c5pass123
+admin:c5pass123:example.com
+192.168.1.1:admin:c5pass123
+admin:c5pass123:192.168.1.1
+example.com;admin;c5pass123
+admin;c5pass123;example.com
+example.com admin c5pass123
+admin c5pass123 example.com
+https://example.com/ghost/|admin|ghostpass123
+admin|ghostpass123|https://example.com/ghost/
+https://example.com:2368/admin/|ghostuser|ghostpass456
+ghostuser|ghostpass456|https://example.com:2368/admin/
+http://example.com/ghost/signin/|ghostadmin|ghostpass789
+ghostadmin|ghostpass789|http://example.com/ghost/signin/
+example.com:2368|admin|ghostpass123
+admin|ghostpass123|example.com:2368
+192.168.1.1:2368|admin|ghostpass123
+admin|ghostpass123|192.168.1.1:2368
+example.com:2368:admin:ghostpass123
+admin:ghostpass123:example.com:2368
+192.168.1.1:2368:admin:ghostpass123
+admin:ghostpass123:192.168.1.1:2368
+192.168.1.1::2368:admin:ghostpass123
+example.com:2368;admin;ghostpass123
+admin;ghostpass123;example.com:2368
+example.com 2368 admin ghostpass123
+admin ghostpass123 example.com:2368
+https://example.com/admin/|admin|gravpass123
+admin|gravpass123|https://example.com/admin/
+https://example.com/admin/login|gravuser|gravpass456
+gravuser|gravpass456|https://example.com/admin/login
+example.com|admin|gravpass123
+admin|gravpass123|example.com
+192.168.1.1|admin|gravpass123
+admin|gravpass123|192.168.1.1
+example.com:admin:gravpass123
+admin:gravpass123:example.com
+192.168.1.1:admin:gravpass123
+admin:gravpass123:192.168.1.1
+example.com;admin;gravpass123
+admin;gravpass123;example.com
+example.com admin gravpass123
+admin gravpass123 example.com
+https://example.com/processwire/|admin|pwpass123
+admin|pwpass123|https://example.com/processwire/
+https://example.com/admin/|pwuser|pwpass456
+pwuser|pwpass456|https://example.com/admin/
+example.com|admin|pwpass123
+admin|pwpass123|example.com
+192.168.1.1|admin|pwpass123
+admin|pwpass123|192.168.1.1
+example.com:admin:pwpass123
+admin:pwpass123:example.com
+192.168.1.1:admin:pwpass123
+admin:pwpass123:192.168.1.1
+example.com;admin;pwpass123
+admin;pwpass123;example.com
+example.com admin pwpass123
+admin pwpass123 example.com
+https://example.com/contao/|admin|contaopass123
+admin|contaopass123|https://example.com/contao/
+https://example.com/contao/login|contaouser|contaopass456
+contaouser|contaopass456|https://example.com/contao/login
+example.com|admin|contaopass123
+admin|contaopass123|example.com
+192.168.1.1|admin|contaopass123
+admin|contaopass123|192.168.1.1
+example.com:admin:contaopass123
+admin:contaopass123:example.com
+192.168.1.1:admin:contaopass123
+admin:contaopass123:192.168.1.1
+example.com;admin;contaopass123
+admin;contaopass123;example.com
+example.com admin contaopass123
+admin contaopass123 example.com
+https://example.com/backend/|admin|octoberpass123
+admin|octoberpass123|https://example.com/backend/
+https://example.com/backend/auth/signin|octoberuser|octoberpass456
+octoberuser|octoberpass456|https://example.com/backend/auth/signin
+example.com|admin|octoberpass123
+admin|octoberpass123|example.com
+192.168.1.1|admin|octoberpass123
+admin|octoberpass123|192.168.1.1
+example.com:admin:octoberpass123
+admin:octoberpass123:example.com
+192.168.1.1:admin:octoberpass123
+admin:octoberpass123:192.168.1.1
+example.com;admin;octoberpass123
+admin;octoberpass123;example.com
+example.com admin octoberpass123
+admin octoberpass123 example.com
+https://example.com/admin/|admin|craftpass123
+admin|craftpass123|https://example.com/admin/
+https://example.com/admin/login|craftuser|craftpass456
+craftuser|craftpass456|https://example.com/admin/login
+http://example.com/cpresources/|craftadmin|craftpass789
+craftadmin|craftpass789|http://example.com/cpresources/
+example.com|admin|craftpass123
+admin|craftpass123|example.com
+192.168.1.1|admin|craftpass123
+admin|craftpass123|192.168.1.1
+example.com:admin:craftpass123
+admin:craftpass123:example.com
+192.168.1.1:admin:craftpass123
+admin:craftpass123:192.168.1.1
+example.com;admin;craftpass123
+admin;craftpass123;example.com
+example.com admin craftpass123
+admin craftpass123 example.com
+https://example.com/cp/|admin|statamicpass123
+admin|statamicpass123|https://example.com/cp/
+https://example.com/cp/auth/login|statamicuser|statamicpass456
+statamicuser|statamicpass456|https://example.com/cp/auth/login
+example.com|admin|statamicpass123
+admin|statamicpass123|example.com
+192.168.1.1|admin|statamicpass123
+admin|statamicpass123|192.168.1.1
+example.com:admin:statamicpass123
+admin:statamicpass123:example.com
+192.168.1.1:admin:statamicpass123
+admin:statamicpass123:192.168.1.1
+example.com;admin;statamicpass123
+admin;statamicpass123;example.com
+example.com admin statamicpass123
+admin statamicpass123 example.com
+https://example.com/admin/|admin|pimcorepass123
+admin|pimcorepass123|https://example.com/admin/
+https://example.com/admin/login/|pimcoreuser|pimcorepass456
+pimcoreuser|pimcorepass456|https://example.com/admin/login/
+http://example.com/pimcore/|pimcoreadmin|pimcorepass789
+pimcoreadmin|pimcorepass789|http://example.com/pimcore/
+example.com|admin|pimcorepass123
+admin|pimcorepass123|example.com
+192.168.1.1|admin|pimcorepass123
+admin|pimcorepass123|192.168.1.1
+example.com:admin:pimcorepass123
+admin:pimcorepass123:example.com
+192.168.1.1:admin:pimcorepass123
+admin:pimcorepass123:192.168.1.1
+example.com;admin;pimcorepass123
+admin;pimcorepass123;example.com
+example.com admin pimcorepass123
+admin pimcorepass123 example.com
+https://example.com/ez/|admin|ezpass123
+admin|ezpass123|https://example.com/ez/
+https://example.com/admin/|ezuser|ezpass456
+ezuser|ezpass456|https://example.com/admin/
+http://example.com/login|ezadmin|ezpass789
+ezadmin|ezpass789|http://example.com/login
+example.com|admin|ezpass123
+admin|ezpass123|example.com
+192.168.1.1|admin|ezpass123
+admin|ezpass123|192.168.1.1
+example.com:admin:ezpass123
+admin:ezpass123:example.com
+192.168.1.1:admin:ezpass123
+admin:ezpass123:192.168.1.1
+example.com;admin;ezpass123
+admin;ezpass123;example.com
+example.com admin ezpass123
+admin ezpass123 example.com
+https://example.com/bolt/|admin|boltpass123
+admin|boltpass123|https://example.com/bolt/
+https://example.com/bolt/login|boltuser|boltpass456
+boltuser|boltpass456|https://example.com/bolt/login
+example.com|admin|boltpass123
+admin|boltpass123|example.com
+192.168.1.1|admin|boltpass123
+admin|boltpass123|192.168.1.1
+example.com:admin:boltpass123
+admin:boltpass123:example.com
+192.168.1.1:admin:boltpass123
+admin:boltpass123:192.168.1.1
+example.com;admin;boltpass123
+admin;boltpass123;example.com
+example.com admin boltpass123
+admin boltpass123 example.com
+https://example.com/admin/|admin|silverstripepass123
+admin|silverstripepass123|https://example.com/admin/
+https://example.com/Security/login|ssuser|silverstripepass456
+ssuser|silverstripepass456|https://example.com/Security/login
+example.com|admin|silverstripepass123
+admin|silverstripepass123|example.com
+192.168.1.1|admin|silverstripepass123
+admin|silverstripepass123|192.168.1.1
+example.com:admin:silverstripepass123
+admin:silverstripepass123:example.com
+192.168.1.1:admin:silverstripepass123
+admin:silverstripepass123:192.168.1.1
+example.com;admin;silverstripepass123
+admin;silverstripepass123;example.com
+example.com admin silverstripepass123
+admin silverstripepass123 example.com
+https://example.com/manager/|admin|modxpass123
+admin|modxpass123|https://example.com/manager/
+https://example.com/connectors/|modxuser|modxpass456
+modxuser|modxpass456|https://example.com/connectors/
+example.com|admin|modxpass123
+admin|modxpass123|example.com
+192.168.1.1|admin|modxpass123
+admin|modxpass123|192.168.1.1
+example.com:admin:modxpass123
+admin:modxpass123:example.com
+192.168.1.1:admin:modxpass123
+admin:modxpass123:192.168.1.1
+example.com;admin;modxpass123
+admin;modxpass123;example.com
+example.com admin modxpass123
+admin modxpass123 example.com
+https://example.com/textpattern/|admin|txppass123
+admin|txppass123|https://example.com/textpattern/
+https://example.com/textpattern/index.php|txpuser|txppass456
+txpuser|txppass456|https://example.com/textpattern/index.php
+example.com|admin|txppass123
+admin|txppass123|example.com
+192.168.1.1|admin|txppass123
+admin|txppass123|192.168.1.1
+example.com:admin:txppass123
+admin:txppass123:example.com
+192.168.1.1:admin:txppass123
+admin:txppass123:192.168.1.1
+example.com;admin;txppass123
+admin;txppass123;example.com
+example.com admin txppass123
+admin txppass123 example.com
+https://example.com/admin/|admin|popojipass123
+admin|popojipass123|https://example.com/admin/
+https://example.com/admin/index.php|popojiuser|popojipass456
+popojiuser|popojipass456|https://example.com/admin/index.php
+http://example.com/popojicms/|popojiadmin|popojipass789
+popojiadmin|popojipass789|http://example.com/popojicms/
+example.com|admin|popojipass123
+admin|popojipass123|example.com
+192.168.1.1|admin|popojipass123
+admin|popojipass123|192.168.1.1
+example.com:admin:popojipass123
+admin:popojipass123:example.com
+192.168.1.1:admin:popojipass123
+admin:popojipass123:192.168.1.1
+example.com;admin;popojipass123
+admin;popojipass123;example.com
+example.com admin popojipass123
+admin popojipass123 example.com
+https://example.com/admin/|admin|lokopass123
+admin|lokopass123|https://example.com/admin/
+https://example.com/adminweb/|lokouser|lokopass456
+lokouser|lokopass456|https://example.com/adminweb/
+example.com|admin|lokopass123
+admin|lokopass123|example.com
+192.168.1.1|admin|lokopass123
+admin|lokopass123|192.168.1.1
+example.com:admin:lokopass123
+admin:lokopass123:example.com
+192.168.1.1:admin:lokopass123
+admin:lokopass123:192.168.1.1
+example.com;admin;lokopass123
+admin;lokopass123;example.com
+example.com admin lokopass123
+admin lokopass123 example.com
+https://example.com/admin/|admin|slimspass123
+admin|slimspass123|https://example.com/admin/
+https://example.com/librarian/|libuser|slimspass456
+libuser|slimspass456|https://example.com/librarian/
+http://example.com/slims/|slimadmin|slimspass789
+slimadmin|slimspass789
